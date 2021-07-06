@@ -31,8 +31,5 @@ Gracias a la variedad de imágenes de los productos y al diseño de la página e
 
 __________
 
-<a href="https://sharing.clickup.com/l/h/6-17749265-1/60f44810d1efb76" target="_blank">
-
-- Product Backlog
-
-</a>
+- [Product Backlog](https://sharing.clickup.com/l/h/6-17749265-1/60f44810d1efb76)
+- [Mockups](https://www.figma.com/file/cLK7Msb213hrWk1RMDRGEK/Mockup?node-id=0%3A1)
