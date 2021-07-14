@@ -15,6 +15,7 @@ __________
 - Luis Osorio
 - Nelly Cuesta
 - Juan Medina
+- Julieth Barrera
 
 </details>
 
