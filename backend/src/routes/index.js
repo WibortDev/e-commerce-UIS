@@ -8,6 +8,6 @@ router.get( '/', ( _req, res ) => {
 	res.status( 200 ).json( { 'Bienvenido al': 'e-commerce grupo 8' } );
 } );
 
-/* router.use( '/api', apiRouter ); */
+router.use( '/api', apiRouter );
 
 export default router;
