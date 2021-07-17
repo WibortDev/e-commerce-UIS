@@ -1,0 +1,39 @@
+### creando un producto nuevo
+POST http://localhost:1215/api/v1/product
+Content-Type: application/json
+
+{
+    "name": "LuisFOsG"
+}
+
+### Obteniendo todos los Productos
+GET http://localhost:1215/api/v1/product
+Content-Type: application/json
+
+{
+    "name": "LuisFOsG"
+}
+
+### Obteniendo un Producto
+GET http://localhost:1215/api/v1/product/aquivaudId
+Content-Type: application/json
+
+{
+    "name": "LuisFOsG"
+}
+
+### Editando Producto
+PUT http://localhost:1215/api/v1/product/aquivaudId
+Content-Type: application/json
+
+{
+    "name": "LuisFOsG"
+}
+
+### Eliminando Producto
+DELETE http://localhost:1215/api/v1/product/aquivaudId
+Content-Type: application/json
+
+{
+    "name": "LuisFOsG"
+}

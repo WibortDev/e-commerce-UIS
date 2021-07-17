@@ -1,3 +1,7 @@
+export const signIn = async ( req, res ) => {
+	res.send( { txt: 'Login' } );
+};
+
 export const sendUser = async ( req, res ) => {
 	res.send( { txt: 'Send User' } );
 };

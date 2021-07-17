@@ -1,19 +1,19 @@
-export const sendProyect = async ( req, res ) => {
-	res.send( { txt: 'Send Proyect' } );
+export const sendProduct = async ( req, res ) => {
+	res.send( { txt: 'Send Product' } );
 };
 
-export const getProyect = async ( req, res ) => {
-	res.send( { txt: 'Get Proyect' } );
+export const getProduct = async ( req, res ) => {
+	res.send( { txt: 'Get Product' } );
 };
 
-export const getProyects = async ( req, res ) => {
-	res.send( { txt: 'Get Proyects' } );
+export const getProducts = async ( req, res ) => {
+	res.send( { txt: 'Get Products' } );
 };
 
-export const editProyect = async ( req, res ) => {
-	res.send( { txt: 'Edit Proyects' } );
+export const editProduct = async ( req, res ) => {
+	res.send( { txt: 'Edit Product' } );
 };
 
-export const deleteProyect = async ( req, res ) => {
-	res.send( { txt: 'Delete Proyects' } );
+export const deleteProduct = async ( req, res ) => {
+	res.send( { txt: 'Delete Product' } );
 };
