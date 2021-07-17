@@ -1,14 +1,14 @@
 import { Router } from 'express';
 
-import * as productsCtrl from '../../../controllers/products-controllers';
+import * as productsCtrl from '../../../controllers/products-controller';
 
 const router = Router();
 
-router.get( '/', productsCtrl.getProyects );
-router.get( '/:id', productsCtrl.getProyect );
+router.get( '/', productsCtrl.getProducts );
+router.get( '/:id', productsCtrl.getProduct );
 
-router.post( '/', productsCtrl.sendProyect );
-router.put( '/:id', productsCtrl.editProyect );
-router.delete( '/:id', productsCtrl.deleteProyect );
+router.post( '/', productsCtrl.sendProduct );
+router.put( '/:id', productsCtrl.editProduct );
+router.delete( '/:id', productsCtrl.deleteProduct );
 
 export default router;
