@@ -6,6 +6,10 @@ export const getUser = async ( req, res ) => {
 	res.send( { txt: 'Get User' } );
 };
 
+export const getUsers = async ( req, res ) => {
+	res.send( { txt: 'Get Users' } );
+};
+
 export const editUser = async ( req, res ) => {
 	res.send( { txt: 'Edit Users' } );
 };

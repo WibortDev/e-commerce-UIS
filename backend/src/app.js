@@ -2,9 +2,13 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 
+import { createRoles } from './libs/initialSetup';
+
 import routes from './routes/index';
 
 const app = express();
+
+createRoles();
 
 app.set( 'port', process.env.PORT || 1215 );
 
