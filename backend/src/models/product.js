@@ -4,7 +4,7 @@ const productSchema = new Schema( {
 	name: { type: String },
 	description: { type: String },
 	imgUrl: { type: String },
-	price: { type: String },
+	price: { type: Number },
 	active: { type: Boolean }
 }, {
 	timestamps: true,
