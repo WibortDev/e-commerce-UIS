@@ -1,39 +1,39 @@
+### Obteniendo todos los Productos
+GET http://localhost:1215/api/v1/product
+
+### Obteniendo un Producto
+GET http://localhost:1215/api/v1/product/60f37dcfab02232c5489d0f9
+
 ### creando un producto nuevo
 POST http://localhost:1215/api/v1/product
 Content-Type: application/json
 
 {
-    "name": "LuisFOsG"
-}
-
-### Obteniendo todos los Productos
-GET http://localhost:1215/api/v1/product
-Content-Type: application/json
-
-{
-    "name": "LuisFOsG"
-}
-
-### Obteniendo un Producto
-GET http://localhost:1215/api/v1/product/aquivaudId
-Content-Type: application/json
-
-{
-    "name": "LuisFOsG"
+	"token": "token",
+    "name": "Producto 1",
+	"description": "Producto 1 - Descripcion",
+	"imgUrl": "https://github.com/code-and-cold/e-commerce-UIS",
+	"price": 5000,
+	"active": true
 }
 
 ### Editando Producto
-PUT http://localhost:1215/api/v1/product/aquivaudId
+PUT http://localhost:1215/api/v1/product/60f383406180901db8e5d061
 Content-Type: application/json
 
 {
-    "name": "LuisFOsG"
+	"token": "token",
+	"name": "Producto 12 xD",
+	"description": "Producto 1 - Descripcion",
+	"imgUrl": "https://github.com/code-and-cold/e-commerce-UIS",
+	"price": 5000,
+	"active": true
 }
 
 ### Eliminando Producto
-DELETE http://localhost:1215/api/v1/product/aquivaudId
+DELETE http://localhost:1215/api/v1/product/60f37ddcab02232c5489d0fd
 Content-Type: application/json
 
 {
-    "name": "LuisFOsG"
+	"token": "token"
 }

@@ -15,5 +15,5 @@ mongoose.connect( connection, {
 	useFindAndModify: false,
 	useCreateIndex: true,
 } )
-	.then( ( _db ) => console.log( `\n Base de datos Lista en ${ NODE_ENV }` ) )
-	.catch( ( _err ) => console.log( `\n ${ NODE_ENV }: Ocurrio un error al conectar en la base de datos. \n  ${_err}` ) );
+	.then( ( _db ) => console.log( `\n Base de datos Lista en ${ NODE_ENV }\n` ) )
+	.catch( ( _err ) => console.log( `\n ${ NODE_ENV }: Ocurrio un error al conectar en la base de datos. \n  ${_err}\n` ) );
