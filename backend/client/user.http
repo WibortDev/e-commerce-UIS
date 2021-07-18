@@ -14,7 +14,7 @@ Content-Type: application/json
 {
     "name": "LuisFOsG",
 	"password": "Hola Mundo",
-	"email": "test@gmail.com"
+	"email": "luis@gmail.com"
 }
 
 ### Obteniendo Datos de los Usuarios
@@ -26,7 +26,7 @@ Content-Type: application/json
 }
 
 ### Obteniendo Datos de un Usuario
-GET http://localhost:1215/api/v1/user/aquivaudId
+GET http://localhost:1215/api/v1/user/60f3929c63cd141c507cf519
 Content-Type: application/json
 
 {
@@ -34,18 +34,18 @@ Content-Type: application/json
 }
 
 ### Editando Datos de un Usuario
-PUT http://localhost:1215/api/v1/user/aquivaudId
+PUT http://localhost:1215/api/v1/user/60f393baa757f43f7c132acc
 Content-Type: application/json
 
 {
 	"token": "token",
-	"name": "LuisFOsG",
+	"name": "Luis",
     "password": "Hola Mundo",
 	"email": "test@gmail.com"
 }
 
 ### Eliminando a Un Usuario
-DELETE http://localhost:1215/api/v1/user/aquivaudId
+DELETE http://localhost:1215/api/v1/user/60f393baa757f43f7c132acc
 Content-Type: application/json
 
 {

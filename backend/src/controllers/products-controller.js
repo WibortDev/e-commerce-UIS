@@ -1,6 +1,6 @@
 import Product from '../models/product';
 
-import { verifySearch, productNotFound } from '../libs/functions';
+import { verifySearch, notFound } from '../helpers/functions';
 
 export const sendProduct = async ( req, res ) => {
 	const {
@@ -31,7 +31,7 @@ export const getProduct = async ( req, res ) => {
 		const product = await Product.findById( productId );
 		verifySearch( res, product );
 	} catch ( err ) {
-		productNotFound( res );
+		notFound( res );
 	}
 };
 
@@ -52,7 +52,7 @@ export const editProduct = async ( req, res ) => {
 
 	try {
 		const product = await Product.findById( productId );
-		if ( !product ) return productNotFound( res );
+		if ( !product ) return notFound( res );
 
 		const editProduct = await product.updateOne( {
 			name,
@@ -64,7 +64,7 @@ export const editProduct = async ( req, res ) => {
 
 		res.status( 200 ).json( editProduct );
 	} catch ( err ) {
-		productNotFound( res );
+		notFound( res );
 	}
 };
 
@@ -75,6 +75,6 @@ export const deleteProduct = async ( req, res ) => {
 		const product = await Product.findByIdAndRemove( productId );
 		verifySearch( res, product );
 	} catch ( err ) {
-		productNotFound( res );
+		notFound( res );
 	}
 };
