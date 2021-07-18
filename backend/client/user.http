@@ -34,7 +34,7 @@ Content-Type: application/json
 }
 
 ### Editando Datos de un Usuario
-PUT http://localhost:1215/api/v1/user/60f393baa757f43f7c132acc
+PUT http://localhost:1215/api/v1/user/60f397ea14145426b01c7955
 Content-Type: application/json
 
 {
@@ -45,7 +45,7 @@ Content-Type: application/json
 }
 
 ### Eliminando a Un Usuario
-DELETE http://localhost:1215/api/v1/user/60f393baa757f43f7c132acc
+DELETE http://localhost:1215/api/v1/user/60f39ad0c1b81a2320465468
 Content-Type: application/json
 
 {
