@@ -3,7 +3,8 @@ POST http://localhost:1215/api/v1/user/login
 Content-Type: application/json
 
 {
-    "name": "LuisFOsG"
+    "email": "test@gmail.com",
+	"password": "Hola Mundo"
 }
 
 ### Registrandose en la Plataforma
@@ -11,7 +12,9 @@ POST http://localhost:1215/api/v1/user
 Content-Type: application/json
 
 {
-    "name": "LuisFOsG"
+    "name": "LuisFOsG",
+	"password": "Hola Mundo",
+	"email": "test@gmail.com"
 }
 
 ### Obteniendo Datos de los Usuarios
@@ -19,7 +22,7 @@ GET http://localhost:1215/api/v1/user
 Content-Type: application/json
 
 {
-    "name": "LuisFOsG"
+    "token": "token"
 }
 
 ### Obteniendo Datos de un Usuario
@@ -27,7 +30,7 @@ GET http://localhost:1215/api/v1/user/aquivaudId
 Content-Type: application/json
 
 {
-    "name": "LuisFOsG"
+    "token": "token"
 }
 
 ### Editando Datos de un Usuario
@@ -35,7 +38,10 @@ PUT http://localhost:1215/api/v1/user/aquivaudId
 Content-Type: application/json
 
 {
-    "name": "LuisFOsG"
+	"token": "token",
+	"name": "LuisFOsG",
+    "password": "Hola Mundo",
+	"email": "test@gmail.com"
 }
 
 ### Eliminando a Un Usuario
@@ -43,5 +49,5 @@ DELETE http://localhost:1215/api/v1/user/aquivaudId
 Content-Type: application/json
 
 {
-    "name": "LuisFOsG"
+    "token": "token"
 }

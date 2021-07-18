@@ -5,10 +5,10 @@ import * as productsCtrl from '../../../controllers/products-controller';
 const router = Router();
 
 router.get( '/', productsCtrl.getProducts );
-router.get( '/:id', productsCtrl.getProduct );
+router.get( '/:productId', productsCtrl.getProduct );
 
 router.post( '/', productsCtrl.sendProduct );
-router.put( '/:id', productsCtrl.editProduct );
-router.delete( '/:id', productsCtrl.deleteProduct );
+router.put( '/:productId', productsCtrl.editProduct );
+router.delete( '/:productId', productsCtrl.deleteProduct );
 
 export default router;

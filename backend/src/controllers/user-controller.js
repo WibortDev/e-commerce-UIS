@@ -1,9 +1,9 @@
 export const signIn = async ( req, res ) => {
-	res.send( { txt: 'Login' } );
+	res.send( req.body );
 };
 
 export const sendUser = async ( req, res ) => {
-	res.send( { txt: 'Send User' } );
+	res.send( req.body );
 };
 
 export const getUser = async ( req, res ) => {
