@@ -13,7 +13,7 @@ router.get(
 );
 router.get(
 	'/:userId',
-	[authJwt.verifyToken, authJwt.verifyAdminToken],
+	[authJwt.verifyToken],
 	userCtrl.getUser
 );
 

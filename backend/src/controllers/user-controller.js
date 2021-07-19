@@ -2,10 +2,20 @@ import User from '../models/user';
 import Role from '../models/role';
 
 import { assignRoles } from '../libs/roles';
+import { jsonWTSend } from '../libs/token';
 import { notFound, verifySearch } from '../helpers/functions';
 
 export const signIn = async ( req, res ) => {
-	res.send( req.body );
+	const { email, password } = req.body;
+
+	const user = await User.findOne( { email } );
+	if ( !user ) return notFound( res, 'User not Register' );
+
+	const isValid = await User.comparePassword( password, user.password );
+	if ( !isValid ) return notFound( res, 'Invalid Password' );
+
+	const token = await jsonWTSend( 86400, user.id );
+	res.json( { token } );
 };
 
 export const sendUser = async ( req, res ) => {
@@ -32,7 +42,9 @@ export const sendUser = async ( req, res ) => {
 	newUser.roles = await assignRoles( Role, roles );
 
 	const saveUser = await newUser.save();
-	res.status( 200 ).send( saveUser );
+
+	const token = jsonWTSend( 86400, saveUser._id );
+	res.status( 200 ).json( { token } );
 };
 
 export const getUser = async ( req, res ) => {
@@ -48,7 +60,7 @@ export const getUser = async ( req, res ) => {
 
 export const getUsers = async ( req, res ) => {
 	const users = await User.find().populate( 'roles' );
-	res.status( 200 ).send( users );
+	res.status( 200 ).json( users );
 };
 
 export const editUser = async ( req, res ) => {
