@@ -1,9 +1,21 @@
 import User from '../models/user';
+import Role from '../models/role';
 
+import { assignRoles } from '../libs/roles';
+import { jsonWTSend } from '../libs/token';
 import { notFound, verifySearch } from '../helpers/functions';
 
 export const signIn = async ( req, res ) => {
-	res.send( req.body );
+	const { email, password } = req.body;
+
+	const user = await User.findOne( { email } );
+	if ( !user ) return notFound( res, 'User not Register' );
+
+	const isValid = await User.comparePassword( password, user.password );
+	if ( !isValid ) return notFound( res, 'Invalid Password' );
+
+	const token = await jsonWTSend( 86400, user.id );
+	res.json( { token } );
 };
 
 export const sendUser = async ( req, res ) => {
@@ -12,6 +24,7 @@ export const sendUser = async ( req, res ) => {
 		name,
 		password,
 	} = req.body;
+	const roles = ['user'];
 
 	try {
 		const user = await User.findOne( { email } );
@@ -23,18 +36,22 @@ export const sendUser = async ( req, res ) => {
 	const newUser = new User( {
 		email,
 		name,
-		password,
+		password: await User.encriptPassword( password ),
 	} );
 
+	newUser.roles = await assignRoles( Role, roles );
+
 	const saveUser = await newUser.save();
-	res.status( 200 ).send( saveUser );
+
+	const token = jsonWTSend( 86400, saveUser._id );
+	res.status( 200 ).json( { token } );
 };
 
 export const getUser = async ( req, res ) => {
 	const { userId } = req.params;
 
 	try {
-		const user = await User.findOne( { _id: userId } );
+		const user = await User.findOne( { _id: userId } ).populate( 'roles' );
 		verifySearch( res, user, 'User not Found' );
 	} catch ( err ) {
 		notFound( res, 'User not Found' );
@@ -42,8 +59,8 @@ export const getUser = async ( req, res ) => {
 };
 
 export const getUsers = async ( req, res ) => {
-	const users = await User.find();
-	res.status( 200 ).send( users );
+	const users = await User.find().populate( 'roles' );
+	res.status( 200 ).json( users );
 };
 
 export const editUser = async ( req, res ) => {
@@ -66,7 +83,7 @@ export const editUser = async ( req, res ) => {
 		const editUser = await user.updateOne( {
 			email,
 			name,
-			password,
+			password: await User.encriptPassword( password ),
 		} );
 
 		res.status( 200 ).json( editUser );

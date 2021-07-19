@@ -3,7 +3,7 @@ POST http://localhost:1215/api/v1/user/login
 Content-Type: application/json
 
 {
-    "email": "test@gmail.com",
+    "email": "luis@gmail.com",
 	"password": "Hola Mundo"
 }
 
@@ -19,35 +19,23 @@ Content-Type: application/json
 
 ### Obteniendo Datos de los Usuarios
 GET http://localhost:1215/api/v1/user
-Content-Type: application/json
-
-{
-    "token": "token"
-}
+token: token
 
 ### Obteniendo Datos de un Usuario
-GET http://localhost:1215/api/v1/user/60f3929c63cd141c507cf519
-Content-Type: application/json
-
-{
-    "token": "token"
-}
+GET http://localhost:1215/api/v1/user/60f4f71489a144284429e63b
+token: token
 
 ### Editando Datos de un Usuario
-PUT http://localhost:1215/api/v1/user/60f393baa757f43f7c132acc
+PUT http://localhost:1215/api/v1/user/60f4f71489a144284429e63b
+token: token
 Content-Type: application/json
 
 {
-	"token": "token",
 	"name": "Luis",
     "password": "Hola Mundo",
 	"email": "test@gmail.com"
 }
 
 ### Eliminando a Un Usuario
-DELETE http://localhost:1215/api/v1/user/60f393baa757f43f7c132acc
-Content-Type: application/json
-
-{
-    "token": "token"
-}
+DELETE http://localhost:1215/api/v1/user/60f4f71489a144284429e63b
+token: token

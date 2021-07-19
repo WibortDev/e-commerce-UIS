@@ -6,10 +6,10 @@ GET http://localhost:1215/api/v1/product/60f37dcfab02232c5489d0f9
 
 ### creando un producto nuevo
 POST http://localhost:1215/api/v1/product
+token: token
 Content-Type: application/json
 
 {
-	"token": "token",
     "name": "Producto 1",
 	"description": "Producto 1 - Descripcion",
 	"imgUrl": "https://github.com/code-and-cold/e-commerce-UIS",
@@ -19,10 +19,10 @@ Content-Type: application/json
 
 ### Editando Producto
 PUT http://localhost:1215/api/v1/product/60f383406180901db8e5d061
+token: token
 Content-Type: application/json
 
 {
-	"token": "token",
 	"name": "Producto 12 xD",
 	"description": "Producto 1 - Descripcion",
 	"imgUrl": "https://github.com/code-and-cold/e-commerce-UIS",
@@ -32,6 +32,7 @@ Content-Type: application/json
 
 ### Eliminando Producto
 DELETE http://localhost:1215/api/v1/product/60f37ddcab02232c5489d0fd
+token: token
 Content-Type: application/json
 
 {

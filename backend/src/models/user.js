@@ -14,13 +14,13 @@ const userSchema = new Schema( {
 	versionKey: false,
 } );
 
-userSchema.statics.encriptarContrasenia = async ( password ) => {
+userSchema.statics.encriptPassword = async ( password ) => {
 	const salt = await bcrypt.genSalt( 10 );
 	return bcrypt.hash( password, salt );
 };
 
 // eslint-disable-next-line arrow-body-style
-userSchema.statics.compararContrasenia = async ( password, comparepassword ) => {
+userSchema.statics.comparePassword = async ( password, comparepassword ) => {
 	return bcrypt.compare( password, comparepassword );
 };
 
