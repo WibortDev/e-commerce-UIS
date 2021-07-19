@@ -5,7 +5,7 @@ import userRouter from './v1/users-router';
 
 const router = Router();
 
-router.use( '/v1/product', proyectRouter );
-router.use( '/v1/user', userRouter );
+router.use( '/product', proyectRouter );
+router.use( '/user', userRouter );
 
 module.exports = router;

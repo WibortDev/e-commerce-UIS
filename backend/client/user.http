@@ -3,8 +3,8 @@ POST http://localhost:1215/api/v1/user/login
 Content-Type: application/json
 
 {
-    "email": "luis@gmail.com",
-	"password": "Hola Mundo"
+    "email": "admin@grupo8.com",
+	"password": "grupo 8"
 }
 
 ### Registrandose en la Plataforma
@@ -12,7 +12,7 @@ POST http://localhost:1215/api/v1/user
 Content-Type: application/json
 
 {
-    "name": "LuisFOsG",
+    "name": "Luis",
 	"password": "Hola Mundo",
 	"email": "luis@gmail.com"
 }
@@ -22,20 +22,24 @@ GET http://localhost:1215/api/v1/user
 token: token
 
 ### Obteniendo Datos de un Usuario
-GET http://localhost:1215/api/v1/user/60f4f71489a144284429e63b
+GET http://localhost:1215/api/v1/user/60f6060b5c90ac2480fe2980
 token: token
 
 ### Editando Datos de un Usuario
-PUT http://localhost:1215/api/v1/user/60f4f71489a144284429e63b
+PUT http://localhost:1215/api/v1/user/60f6060b5c90ac2480fe2980
 token: token
 Content-Type: application/json
 
 {
-	"name": "Luis",
+	"name": "LuisF",
     "password": "Hola Mundo",
-	"email": "test@gmail.com"
+	"email": "luis@gmail.com"
 }
 
 ### Eliminando a Un Usuario
-DELETE http://localhost:1215/api/v1/user/60f4f71489a144284429e63b
+DELETE http://localhost:1215/api/v1/user/60f6060b5c90ac2480fe2980
+token: token
+
+### Dandole Admin a un Usuario
+PUT http://localhost:1215/api/v1/user/admin/60f6060b5c90ac2480fe2980
 token: token

@@ -13,7 +13,7 @@ router.get(
 );
 router.get(
 	'/:userId',
-	[authJwt.verifyToken],
+	[authJwt.verifyToken, authJwt.verifyAuthorToken],
 	userCtrl.getUser
 );
 
@@ -22,13 +22,18 @@ router.post( '/login', userCtrl.signIn );
 
 router.put(
 	'/:userId',
-	[authJwt.verifyToken],
+	[authJwt.verifyToken, authJwt.verifyAuthorToken],
 	userCtrl.editUser
+);
+router.put(
+	'/admin/:userId',
+	[authJwt.verifyToken, authJwt.verifyAdminToken],
+	userCtrl.giveRoleAdmin
 );
 
 router.delete(
 	'/:userId',
-	[authJwt.verifyToken],
+	[authJwt.verifyToken, authJwt.verifyAuthorToken],
 	userCtrl.deleteUser
 );
 
