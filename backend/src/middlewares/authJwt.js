@@ -2,6 +2,20 @@ import { jsonWTVerify } from '../libs/token';
 import User from '../models/user';
 import Role from '../models/role';
 
+const requireAdmin = async ( req ) => {
+	const user = await User.findById( req.userId );
+
+	const roles = await Role.find( { _id: { $in: user.roles } } );
+
+	for ( let i = 0; i < roles.length; i++ ) {
+		if ( roles[i].name === 'admin' ) {
+			return true;
+		}
+	}
+
+	return false;
+};
+
 export const verifyToken = async ( req, res, next ) => {
 	const { token } = req.headers;
 
@@ -21,16 +35,17 @@ export const verifyToken = async ( req, res, next ) => {
 };
 
 export const verifyAdminToken = async ( req, res, next ) => {
-	const user = await User.findById( req.userId );
+	const isAdmin = await requireAdmin( req );
+	if ( isAdmin ) return next();
 
-	const roles = await Role.find( { _id: { $in: user.roles } } );
+	return res.status( 403 ).json( { message: 'Require Admin Role' } );
+};
 
-	for ( let i = 0; i < roles.length; i++ ) {
-		if ( roles[i].name === 'admin' ) {
-			next();
-			return;
-		}
-	}
+export const verifyAuthorToken = async ( req, res, next ) => {
+	const isAdmin = await requireAdmin( req );
+	if ( isAdmin ) return next();
+
+	if ( req.userId === req.params.userId ) return next();
 
 	return res.status( 403 ).json( { message: 'Require Admin Role' } );
 };

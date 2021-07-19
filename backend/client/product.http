@@ -2,7 +2,7 @@
 GET http://localhost:1215/api/v1/product
 
 ### Obteniendo un Producto
-GET http://localhost:1215/api/v1/product/60f37dcfab02232c5489d0f9
+GET http://localhost:1215/api/v1/product/60f608a65c90ac2480fe29d1
 
 ### creando un producto nuevo
 POST http://localhost:1215/api/v1/product
@@ -18,7 +18,7 @@ Content-Type: application/json
 }
 
 ### Editando Producto
-PUT http://localhost:1215/api/v1/product/60f383406180901db8e5d061
+PUT http://localhost:1215/api/v1/product/60f608a65c90ac2480fe29d1
 token: token
 Content-Type: application/json
 
@@ -31,7 +31,7 @@ Content-Type: application/json
 }
 
 ### Eliminando Producto
-DELETE http://localhost:1215/api/v1/product/60f37ddcab02232c5489d0fd
+DELETE http://localhost:1215/api/v1/product/60f608b95c90ac2480fe29df
 token: token
 Content-Type: application/json
 
