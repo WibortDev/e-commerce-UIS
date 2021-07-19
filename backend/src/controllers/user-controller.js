@@ -15,7 +15,7 @@ export const signIn = async ( req, res ) => {
 	if ( !isValid ) return notFound( res, 'Invalid Password' );
 
 	const token = await jsonWTSend( 86400, user.id );
-	res.json( { token } );
+	res.json( { token, id: user.id } );
 };
 
 export const sendUser = async ( req, res ) => {
@@ -44,7 +44,7 @@ export const sendUser = async ( req, res ) => {
 	const saveUser = await newUser.save();
 
 	const token = jsonWTSend( 86400, saveUser._id );
-	res.status( 200 ).json( { token } );
+	res.status( 200 ).json( { token, id: saveUser._id } );
 };
 
 export const getUser = async ( req, res ) => {
@@ -72,7 +72,7 @@ export const editUser = async ( req, res ) => {
 	} = req.body;
 
 	try {
-		const user = await User.findOne( { _id: userId } );
+		const user = await User.findById( userId );
 		if ( !user ) return notFound( res, 'User not Found' );
 
 		if ( user.email !== email ) {
@@ -98,6 +98,22 @@ export const deleteUser = async ( req, res ) => {
 	try {
 		const user = await User.findByIdAndDelete( userId );
 		verifySearch( res, user, 'User not Found' );
+	} catch ( err ) {
+		notFound( res, 'User not Found' );
+	}
+};
+
+export const giveRoleAdmin = async ( req, res ) => {
+	const { userId } = req.params;
+	const roles = ['user', 'admin'];
+
+	try {
+		const user = await User.findByIdAndUpdate( userId, {
+			roles: await assignRoles( Role, roles ),
+		} );
+		if ( user ) return res.status( 200 ).json( { message: 'Now is Admin' } );
+
+		notFound( res, 'User not Found' );
 	} catch ( err ) {
 		notFound( res, 'User not Found' );
 	}

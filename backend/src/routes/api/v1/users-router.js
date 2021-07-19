@@ -25,6 +25,11 @@ router.put(
 	[authJwt.verifyToken],
 	userCtrl.editUser
 );
+router.put(
+	'/admin/:userId',
+	[authJwt.verifyToken, authJwt.verifyAdminToken],
+	userCtrl.giveRoleAdmin
+);
 
 router.delete(
 	'/:userId',
