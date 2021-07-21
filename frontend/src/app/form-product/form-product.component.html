@@ -1,0 +1,43 @@
+<mat-form-field appearance="legacy">
+  <mat-label>Titulo</mat-label>
+  <input matInput name="title" placeholder="Ej: Nuevo Celular 2020" [(ngModel)]="texto" >
+</mat-form-field>
+
+<br>
+
+<mat-form-field appearance="legacy">
+  <mat-label>Descripción</mat-label>
+  <textarea matInput name="description" placeholder="Ej: En diferentes colores"></textarea>
+</mat-form-field>
+
+<br>
+
+<mat-form-field appearance="legacy">
+  <mat-label>Imagen</mat-label>
+  <input matInput name="imagen" placeholder="https://producto.jpg">
+</mat-form-field>
+
+<br>
+
+<mat-form-field appearance="legacy">
+  <mat-label>Precio</mat-label>
+  <input type="number" matInput name="imagen" placeholder="$ 50000">
+</mat-form-field>
+
+<br>
+
+<button mat-stroked-button color="primary" (click)="onSubmit()">Agregar</button>
+
+<p *ngFor="let product of products">
+  {{ product }}
+</p>
+
+<br><br>
+
+<div class="contenedor" >
+  <mat-card>
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+    <mat-card-title>Hola Mundo</mat-card-title>
+    <mat-card-content>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, debitis numquam eum voluptate quia et modi nesciunt tempora laboriosam cumque id, labore repellendus, possimus nostrum hic amet facere maiores necessitatibus ullam voluptatum. Ut veniam sunt animi sed repellendus consequatur ea, commodi perferendis itaque explicabo dolor possimus vero, deleniti, ipsa beatae.</mat-card-content>
+  </mat-card>
+</div>
