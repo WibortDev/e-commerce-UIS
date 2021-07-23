@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { NgForm } from '@angular/forms';
+
 import { ProductModel } from '../models/product.model'
 
 @Component({
@@ -10,15 +12,22 @@ import { ProductModel } from '../models/product.model'
 
 export class FormProductComponent implements OnInit {
   texto: string = "";
-  products: string[] = [];
+  products: ProductModel[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onSubmit(): void {
-    this.products.push(this.texto);
+  onSubmitForm(form: NgForm): void {
+    console.log( form );
+
+    this.products.push( {
+      name: form.value.title,
+      description: form.value.description,
+      price: form.value.price,
+      image: form.value.image
+     } );
   }
 
 }
