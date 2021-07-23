@@ -1,7 +1,7 @@
 export interface ProductModel {
     id?: string;
     active?: boolean;
-    name: string;
+    title: string;
     description: string;
     image: string;
     price: number;
