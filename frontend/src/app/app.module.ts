@@ -10,11 +10,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormProductComponent } from './form-product/form-product.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormProductComponent
+    FormProductComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,

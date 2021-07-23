@@ -1,43 +1,41 @@
-<mat-form-field appearance="legacy">
-  <mat-label>Titulo</mat-label>
-  <input matInput name="title" placeholder="Ej: Nuevo Celular 2020" [(ngModel)]="texto" >
-</mat-form-field>
+<form (submit)="onSubmitForm(postForm)" #postForm="ngForm">
+  <mat-form-field appearance="legacy">
+    <mat-label>Titulo</mat-label>
+    <input matInput name="title" placeholder="Ej: Nuevo Celular 2020" ngModel title="ngModel" required>
+  </mat-form-field>
 
-<br>
+  <br>
 
-<mat-form-field appearance="legacy">
-  <mat-label>Descripción</mat-label>
-  <textarea matInput name="description" placeholder="Ej: En diferentes colores"></textarea>
-</mat-form-field>
+  <mat-form-field appearance="legacy">
+    <mat-label>Descripción</mat-label>
+    <textarea matInput name="description" placeholder="Ej: En diferentes colores" ngModel description="ngModel" required></textarea>
+  </mat-form-field>
 
-<br>
+  <br>
 
-<mat-form-field appearance="legacy">
-  <mat-label>Imagen</mat-label>
-  <input matInput name="imagen" placeholder="https://producto.jpg">
-</mat-form-field>
+  <mat-form-field appearance="legacy">
+    <mat-label>Imagen</mat-label>
+    <input matInput name="image" placeholder="https://producto.jpg" ngModel image="ngModel" required>
+  </mat-form-field>
 
-<br>
+  <br>
 
-<mat-form-field appearance="legacy">
-  <mat-label>Precio</mat-label>
-  <input type="number" matInput name="imagen" placeholder="$ 50000">
-</mat-form-field>
+  <mat-form-field appearance="legacy">
+    <mat-label>Precio</mat-label>
+    <input type="number" matInput name="price" placeholder="$ 50000" ngModel price="ngModel" required>
+  </mat-form-field>
 
-<br>
+  <br>
 
-<button mat-stroked-button color="primary" (click)="onSubmit()">Agregar</button>
+  <button type="submit" mat-stroked-button color="primary">Agregar</button>
+</form>
 
-<p *ngFor="let product of products">
-  {{ product }}
-</p>
-
-<br><br>
-
-<div class="contenedor" >
-  <mat-card>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
-    <mat-card-title>Hola Mundo</mat-card-title>
-    <mat-card-content>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, debitis numquam eum voluptate quia et modi nesciunt tempora laboriosam cumque id, labore repellendus, possimus nostrum hic amet facere maiores necessitatibus ullam voluptatum. Ut veniam sunt animi sed repellendus consequatur ea, commodi perferendis itaque explicabo dolor possimus vero, deleniti, ipsa beatae.</mat-card-content>
-  </mat-card>
+<div *ngFor="let product of products">
+  <div class="contenedor" >
+    <mat-card>
+      <img mat-card-image src="{{ product.image }}">
+      <mat-card-title>{{ product.name }} - $ {{ product.price }}</mat-card-title>
+      <mat-card-content>{{ product.description }}</mat-card-content>
+    </mat-card>
+  </div>
 </div>
