@@ -1,3 +1,21 @@
 .contenedor {
   width: 500px;
 }
+
+h1 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 4rem;
+}
+
+form {
+  margin-top: 3rem;
+}
+
+mat-form-field, input {
+  width: 100%;
+}
+
+button {
+  margin-top: 2rem;
+  width: 40%;
+}

@@ -1,3 +1,4 @@
+<h1>Nuevo Producto</h1>
 <form (submit)="onSubmitForm(postForm)" #postForm="ngForm">
   <mat-form-field appearance="legacy">
     <mat-label>Titulo</mat-label>
@@ -27,15 +28,5 @@
 
   <br>
 
-  <button type="submit" mat-stroked-button color="primary">Agregar</button>
+  <button type="submit" mat-raised-button color="primary" >Agregar</button>
 </form>
-
-<div *ngFor="let product of products">
-  <div class="contenedor" >
-    <mat-card>
-      <img mat-card-image src="{{ product.image }}">
-      <mat-card-title>{{ product.name }} - $ {{ product.price }}</mat-card-title>
-      <mat-card-content>{{ product.description }}</mat-card-content>
-    </mat-card>
-  </div>
-</div>

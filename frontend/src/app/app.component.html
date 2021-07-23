@@ -1,3 +1,6 @@
-<h1>e-commerce</h1>
+<app-header></app-header>
 
-<form-product></form-product>
+<main>
+  <form-product (onSubmitProduct)="productCreated($event)" ></form-product>
+  <product-card [products]="storedProducts" ></product-card>
+</main>

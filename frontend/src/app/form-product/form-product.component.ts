@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { NgForm } from '@angular/forms';
 
 import { ProductModel } from '../models/product.model'
 
-@Component({
+@Component( {
   selector: 'form-product',
   templateUrl: './form-product.component.html',
   styleUrls: ['./form-product.component.css']
-})
+} )
 
 export class FormProductComponent implements OnInit {
-  texto: string = "";
   products: ProductModel[] = [];
+  @Output() onSubmitProduct: any = new EventEmitter<ProductModel>();
 
   constructor() { }
 
@@ -20,14 +20,8 @@ export class FormProductComponent implements OnInit {
   }
 
   onSubmitForm(form: NgForm): void {
-    console.log( form );
-
-    this.products.push( {
-      name: form.value.title,
-      description: form.value.description,
-      price: form.value.price,
-      image: form.value.image
-     } );
+    this.onSubmitProduct.emit(form.value);
+    form.reset();
   }
 
 }
