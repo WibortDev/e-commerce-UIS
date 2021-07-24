@@ -11,8 +11,8 @@ import { MatCardModule } from '@angular/material/card';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormProductComponent } from './form-product/form-product.component';
-import { ProductCardComponent } from './product-card/product-card.component';
+import { FormProductComponent } from './components/form-product/form-product.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 import { HeaderComponent } from './header/header.component';
 
 @NgModule({
