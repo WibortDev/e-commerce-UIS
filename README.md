@@ -29,10 +29,7 @@ npm install
 npm run dev
 ```
 
-**NOTA:**
-- Una linea a la vez.
-
-3. En la segunda consola que es para el frontend, usaremos los siguientes comandos:
+1. En la segunda consola que es para el frontend, usaremos los siguientes comandos:
 
 ```bash
 cd frontend
@@ -42,11 +39,12 @@ npm install
 ng serve
 ```
 
+1. El servidor de desarrollo de Angular por lo general esta corriendo en `localhost:4200`
+
 **NOTA:**
-- Es importante que tenga instalado Angular CLI
+- Es importante que tenga instalado Angular CLI y NodeJS.
 - Una linea a la vez.
 
-4. El servidor de desarrollo de Angular por lo general esta corriendo en `localhost:4200`
 </details>
 
 _______
