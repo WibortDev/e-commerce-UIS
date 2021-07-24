@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { NgForm } from '@angular/forms';
 
-import { ProductModel } from '../models/product.model'
+import { ProductModel } from '../../models/product.model'
 
 @Component( {
   selector: 'form-product',
@@ -20,8 +20,9 @@ export class FormProductComponent implements OnInit {
   }
 
   onSubmitForm(form: NgForm): void {
-    this.onSubmitProduct.emit(form.value);
-    form.reset();
+    if( form.valid ) {
+      this.onSubmitProduct.emit(form.value);
+      form.reset();
+    }
   }
-
 }
