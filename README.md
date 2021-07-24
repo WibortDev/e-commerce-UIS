@@ -53,6 +53,8 @@ _______
 
 ## 🕵 Roles
 
+<div align="center">
+
 | Nombre          | Cargo         |
 |-----------------|---------------|
 | Deiver Zaraza   | Scrum Master  |
@@ -61,6 +63,8 @@ _______
 | Nelly Cuesta    | Team Scrum    |
 | Juan Medina     | Team Scrum    |
 | Julieth Barrera | Team Scrum    |
+
+</div>
 
 _______
 
