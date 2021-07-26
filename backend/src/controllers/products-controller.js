@@ -4,7 +4,7 @@ import { verifySearch, notFound } from '../helpers/functions';
 
 export const sendProduct = async ( req, res ) => {
 	const {
-		name,
+		title,
 		description,
 		imgUrl,
 		price,
@@ -12,7 +12,7 @@ export const sendProduct = async ( req, res ) => {
 	} = req.body;
 
 	const newProduct = new Product( {
-		name,
+		title,
 		description,
 		imgUrl,
 		price,
@@ -43,7 +43,7 @@ export const getProducts = async ( req, res ) => {
 export const editProduct = async ( req, res ) => {
 	const { productId } = req.params;
 	const {
-		name,
+		title,
 		description,
 		imgUrl,
 		price,
@@ -55,7 +55,7 @@ export const editProduct = async ( req, res ) => {
 		if ( !product ) return notFound( res );
 
 		const editProduct = await product.updateOne( {
-			name,
+			title,
 			description,
 			imgUrl,
 			price,

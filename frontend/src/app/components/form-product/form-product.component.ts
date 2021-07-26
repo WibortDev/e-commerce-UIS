@@ -1,8 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { NgForm } from '@angular/forms';
-
-import { ProductModel } from '../../models/product.model'
+import { PostProductService } from 'src/app/services/post-product.service';
 
 @Component( {
   selector: 'form-product',
@@ -11,18 +10,16 @@ import { ProductModel } from '../../models/product.model'
 } )
 
 export class FormProductComponent implements OnInit {
-  products: ProductModel[] = [];
-  @Output() onSubmitProduct: any = new EventEmitter<ProductModel>();
-
-  constructor() { }
+  constructor(public postService: PostProductService) { }
 
   ngOnInit(): void {
   }
 
   onSubmitForm(form: NgForm): void {
+
     if( form.valid ) {
-      this.onSubmitProduct.emit(form.value);
-      form.reset();
+      this.postService.addProduct(form.value);
+      form.resetForm();
     }
   }
 }

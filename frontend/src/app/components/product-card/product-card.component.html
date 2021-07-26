@@ -1,9 +1,13 @@
 <div *ngFor="let product of products">
   <div class="contenedor" >
     <mat-card>
-      <img mat-card-image src="{{ product.image }}">
+      <img mat-card-image src="{{ product.imgUrl }}">
       <mat-card-title>{{ product.title }} - $ {{ product.price }}</mat-card-title>
       <mat-card-content>{{ product.description }}</mat-card-content>
+      <mat-card-actions>
+        <button mat-stroked-button color="primary">Editar</button>
+        <button mat-stroked-button color="warn" (click)="deleteProduct(product._id)">Eliminar</button>
+      </mat-card-actions>
     </mat-card>
   </div>
 </div>

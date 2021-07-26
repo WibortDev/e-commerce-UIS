@@ -9,14 +9,7 @@
 
   <mat-form-field appearance="legacy">
     <mat-label>Descripción</mat-label>
-    <textarea matInput name="description" placeholder="Ej: En diferentes colores" ngModel description="ngModel"></textarea>
-  </mat-form-field>
-
-  <br>
-
-  <mat-form-field appearance="legacy">
-    <mat-label>Imagen</mat-label>
-    <input matInput name="image" placeholder="https://producto.jpg" ngModel image="ngModel" required>
+    <textarea matInput name="description" placeholder="Ej: En diferentes colores" ngModel description="ngModel" required></textarea>
   </mat-form-field>
 
   <br>
@@ -25,6 +18,13 @@
     <mat-label>Precio</mat-label>
     <input type="number" matInput name="price" placeholder="$ 50000" ngModel price="ngModel" required>
   </mat-form-field>
+
+  <mat-form-field appearance="legacy">
+    <mat-label>Imagen</mat-label>
+    <input matInput name="imgUrl" placeholder="https://producto.jpg" ngModel imgUrl="ngModel" required>
+  </mat-form-field>
+
+  <br>
 
   <br>
 
