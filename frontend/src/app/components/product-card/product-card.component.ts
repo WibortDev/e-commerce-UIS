@@ -26,4 +26,7 @@ export class ProductCardComponent implements OnInit, OnDestroy {
     this.productSubscription.unsubscribe();
   }
 
+  deleteProduct( id: string ): void {
+    this.postService.deleteProduct( id );
+  }
 }

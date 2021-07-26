@@ -18,9 +18,8 @@ export class PostProductService {
 
   addProduct(product: ProductModel) {
     this.http.post<ProductModel>( `${this.api}/product`, product).subscribe( (response) => {
-      console.log(response);
-
       this.products.push( {
+        _id: response._id,
         title: product.title,
         description: product.description,
         price: product.price,
@@ -42,5 +41,15 @@ export class PostProductService {
 
   getProductsUpdate() {
     return this.productsUpdate.asObservable();
+  }
+
+  deleteProduct(id: string) {
+    this.http.delete(`${this.api}/product/${id}`).subscribe( ( response ) => {
+      this.products = this.products.filter( (product) => {
+        return product._id !== id;
+      });
+
+      this.productsUpdate.next([...this.products]);
+    });
   }
 }
