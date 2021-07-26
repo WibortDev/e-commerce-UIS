@@ -19,7 +19,7 @@ export class FormProductComponent implements OnInit {
 
     if( form.valid ) {
       this.postService.addProduct(form.value);
-      form.reset();
+      form.resetForm();
     }
   }
 }

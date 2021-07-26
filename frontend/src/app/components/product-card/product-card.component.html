@@ -1,7 +1,7 @@
 <div *ngFor="let product of products">
   <div class="contenedor" >
     <mat-card>
-      <img mat-card-image src="{{ product.image }}">
+      <img mat-card-image src="{{ product.imgUrl }}">
       <mat-card-title>{{ product.title }} - $ {{ product.price }}</mat-card-title>
       <mat-card-content>{{ product.description }}</mat-card-content>
     </mat-card>

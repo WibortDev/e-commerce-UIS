@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose';
 
 const productSchema = new Schema( {
-	name: { type: String },
+	title: { type: String },
 	description: { type: String },
 	imgUrl: { type: String },
 	price: { type: Number },

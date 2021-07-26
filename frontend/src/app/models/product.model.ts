@@ -3,6 +3,6 @@ export interface ProductModel {
     active?: boolean;
     title: string;
     description: string;
-    image: string;
+    imgUrl: string;
     price: number;
 }
