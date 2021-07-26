@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { ProductModel } from '../models/product.model';
 
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class PostProductService {
 
   api: String = "http://localhost:1215/api/v1"
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   addProduct(product: ProductModel) {
     this.http.post<ProductModel>( `${this.api}/product`, product).subscribe( (response) => {
@@ -27,6 +28,7 @@ export class PostProductService {
        } );
 
        this.productsUpdate.next([...this.products]);
+       this.router.navigate(['/']);
     });
   }
 
