@@ -14,14 +14,20 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormProductComponent } from './components/form-product/form-product.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './pages/header/header.component';
+import { IndexComponent } from './pages/index/index.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormProductComponent,
     ProductCardComponent,
-    HeaderComponent
+    HeaderComponent,
+    IndexComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
