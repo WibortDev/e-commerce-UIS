@@ -1,13 +1,21 @@
-<div *ngFor="let product of products">
-  <div class="contenedor" >
-    <mat-card>
-      <img mat-card-image src="{{ product.imgUrl }}">
-      <mat-card-title>{{ product.title }} - $ {{ product.price }}</mat-card-title>
-      <mat-card-content>{{ product.description }}</mat-card-content>
-      <mat-card-actions>
-        <button mat-stroked-button color="primary">Editar</button>
-        <button mat-stroked-button color="warn" (click)="deleteProduct(product._id)">Eliminar</button>
-      </mat-card-actions>
-    </mat-card>
+<div *ngIf="products.length !== 0" >
+  <div class="grid" >
+    <div *ngFor="let product of products">
+      <mat-card class="contenedor">
+        <img mat-card-image src="{{ product.imgUrl }}">
+        <mat-card-title>{{ product.title }} - <strong>$ {{ product.price }}</strong></mat-card-title>
+        <mat-card-content><br>{{ product.description }}</mat-card-content>
+        <mat-card-actions>
+          <button mat-stroked-button color="primary">Editar</button>
+          <button mat-stroked-button color="warn" (click)="deleteProduct(product._id)">Eliminar</button>
+          <br><br>
+        </mat-card-actions>
+      </mat-card>
+    </div>
   </div>
+</div>
+
+<div *ngIf="products.length === 0" >
+  <h1><strong>Actualmente no hay productos que mostrar</strong></h1>
+  <img class="img-notfound" src="https://cdn.shortpixel.ai/spai/w_898+q_lossy+ret_img/https://www.eude.es/wp-content/uploads/2021/04/Disen%CC%83o-sin-ti%CC%81tulo-32-820x450.png" alt="Not Found">
 </div>
