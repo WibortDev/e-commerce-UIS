@@ -2,7 +2,7 @@
   <div class="grid" >
     <div *ngFor="let product of products">
       <mat-card class="contenedor">
-        <img mat-card-image src="{{ product.imgUrl }}">
+        <img mat-card-image height="300" src="{{ product.imgUrl }}">
         <mat-card-title>{{ product.title }} - <strong>$ {{ product.price }}</strong></mat-card-title>
         <mat-card-content><br>{{ product.description }}</mat-card-content>
         <mat-card-actions>
