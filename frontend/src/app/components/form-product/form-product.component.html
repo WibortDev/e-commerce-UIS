@@ -1,32 +1,57 @@
-<h1>Nuevo Producto</h1>
+<h1 *ngIf="isEditMode">Producto</h1>
+<h1 *ngIf="!isEditMode">Nuevo Producto</h1>
+
 <form (submit)="onSubmitForm(postForm)" #postForm="ngForm">
   <mat-form-field appearance="legacy">
     <mat-label>Titulo</mat-label>
-    <input matInput name="title" placeholder="Ej: Nuevo Celular 2020" ngModel title="ngModel" required>
+    <input matInput name="title"
+      placeholder="Ej: Nuevo Celular 2020"
+      [ngModel]="product.title"
+      title="ngModel"
+      required
+    >
   </mat-form-field>
 
   <br>
 
   <mat-form-field appearance="legacy">
     <mat-label>Descripción</mat-label>
-    <textarea matInput name="description" placeholder="Ej: En diferentes colores" ngModel description="ngModel" required></textarea>
+    <textarea matInput name="description"
+      placeholder="Ej: En diferentes colores"
+      [ngModel]="product.description"
+      description="ngModel"
+      required
+    >
+    </textarea>
   </mat-form-field>
 
   <br>
 
   <mat-form-field appearance="legacy">
     <mat-label>Precio</mat-label>
-    <input type="number" matInput name="price" placeholder="$ 50000" ngModel price="ngModel" required>
+    <input type="number" matInput name="price"
+      placeholder="$ 50000"
+      [ngModel]="product.price"
+      price="ngModel"
+      required
+    >
   </mat-form-field>
 
   <mat-form-field appearance="legacy">
     <mat-label>Imagen</mat-label>
-    <input matInput name="imgUrl" placeholder="https://producto.jpg" ngModel imgUrl="ngModel" required>
+    <input matInput name="imgUrl"
+      placeholder="https://producto.jpg"
+      [ngModel]="product.imgUrl"
+      imgUrl="ngModel"
+      required
+    >
   </mat-form-field>
 
   <br>
-
   <br>
 
-  <button type="submit" mat-raised-button color="primary" >Agregar</button>
+  <button type="submit" mat-raised-button color="primary" >
+    <div *ngIf="isEditMode">Editar</div>
+    <div *ngIf="!isEditMode">Agregar</div>
+  </button>
 </form>

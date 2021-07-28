@@ -32,6 +32,10 @@ export class PostProductService {
     });
   }
 
+  getProduct(id: string) {
+    return this.http.get<ProductModel>( `${this.api}/product/${id}` );
+  }
+
   getProducts() {
     this.http.get<ProductModel[]>(`${this.api}/product`).subscribe( (products) => {
       this.products = products;
@@ -52,6 +56,26 @@ export class PostProductService {
       });
 
       this.productsUpdate.next([...this.products]);
+    });
+  }
+
+  editProduct(product: ProductModel, id: string) {
+    this.http.put<ProductModel>( `${this.api}/product/${ id }`, product).subscribe( (response) => {
+      this.products = this.products.map( (product) => {
+        if (product._id === response._id) {
+          return {
+            _id: response._id,
+            title: product.title,
+            description: product.description,
+            price: product.price,
+            imgUrl: product.imgUrl
+          };
+        }
+        return product;
+      });
+
+      this.productsUpdate.next([...this.products]);
+      this.router.navigate(['/products']);
     });
   }
 }

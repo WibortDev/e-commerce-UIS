@@ -6,7 +6,7 @@
         <mat-card-title>{{ product.title }} - <strong>$ {{ product.price }}</strong></mat-card-title>
         <mat-card-content><br>{{ product.description }}</mat-card-content>
         <mat-card-actions>
-          <button mat-stroked-button color="primary">Editar</button>
+          <button mat-stroked-button color="primary" [routerLink]="['/edit', product._id]" >Editar</button>
           <button mat-stroked-button color="warn" (click)="deleteProduct(product._id)">Eliminar</button>
           <br><br>
         </mat-card-actions>

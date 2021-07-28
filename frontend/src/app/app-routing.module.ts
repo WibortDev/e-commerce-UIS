@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'add', component: FormProductComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'edit/:id', component: FormProductComponent }
 ];
 
 @NgModule({
