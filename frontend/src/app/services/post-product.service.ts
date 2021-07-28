@@ -28,7 +28,7 @@ export class PostProductService {
        } );
 
        this.productsUpdate.next([...this.products]);
-       this.router.navigate(['/']);
+       this.router.navigate(['/products']);
     });
   }
 
