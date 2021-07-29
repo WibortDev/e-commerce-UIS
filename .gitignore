@@ -1,6 +1,9 @@
 node_modules
-
 .vscode
+.env
+
+# -------------- Backend
+dist
 
 # --------------
 package-lock.json

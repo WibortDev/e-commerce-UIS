@@ -1,0 +1,73 @@
+<div class="grid">
+  <mat-card class="formulario">
+    <br>
+    <h1 *ngIf="isEditMode">Producto</h1>
+    <h1 *ngIf="!isEditMode">Nuevo Producto</h1>
+
+    <form (submit)="onSubmitForm(postForm)" #postForm="ngForm">
+      <mat-form-field appearance="legacy">
+        <mat-label>Titulo</mat-label>
+        <input matInput name="title"
+          placeholder="Ej: Nuevo Celular 2020"
+          [(ngModel)]="product.title"
+          title="ngModel"
+          required
+        >
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Descripción</mat-label>
+        <textarea matInput name="description"
+          placeholder="Ej: En diferentes colores"
+          [(ngModel)]="product.description"
+          description="ngModel"
+          required
+        >
+        </textarea>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Precio</mat-label>
+        <input type="number" matInput name="price"
+          placeholder="$ 50000"
+          [(ngModel)]="product.price"
+          price="ngModel"
+          required
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Imagen</mat-label>
+        <input matInput name="imgUrl"
+          placeholder="https://producto.jpg"
+          [(ngModel)]="product.imgUrl"
+          imgUrl="ngModel"
+          required
+        >
+      </mat-form-field>
+
+      <br>
+      <br>
+
+      <button type="submit" mat-raised-button color="primary" >
+        <div *ngIf="isEditMode">Editar</div>
+        <div *ngIf="!isEditMode">Agregar</div>
+      </button>
+      <a mat-raised-button routerLink="/products" color="warn" >Salir</a>
+    </form>
+    <br>
+    </mat-card>
+
+    <!-- Previsualización -->
+    <mat-card>
+      <img *ngIf="product.imgUrl" mat-card-image height="300" src="{{ product.imgUrl }}" >
+      <mat-card-title *ngIf="product.title || product.price" >
+        {{ product.title }} - <strong>$ {{ product.price }}</strong>
+      </mat-card-title>
+      <mat-card-content><br>{{ product.description }}</mat-card-content>
+    </mat-card>
+</div>

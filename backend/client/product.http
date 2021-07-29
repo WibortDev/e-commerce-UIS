@@ -1,0 +1,40 @@
+### Obteniendo todos los Productos
+GET http://localhost:1215/api/v1/product
+
+### Obteniendo un Producto
+GET http://localhost:1215/api/v1/product/60f608a65c90ac2480fe29d1
+
+### creando un producto nuevo
+POST http://localhost:1215/api/v1/product
+token: token
+Content-Type: application/json
+
+{
+    "title": "Producto 1",
+	"description": "Producto 1 - Descripcion",
+	"imgUrl": "https://cdn.forbes.co/2020/11/Xiaomi-1280x720-JPG.jpg",
+	"price": 5000,
+	"active": true
+}
+
+### Editando Producto
+PUT http://localhost:1215/api/v1/product/60f608a65c90ac2480fe29d1
+token: token
+Content-Type: application/json
+
+{
+	"title": "Producto 12 xD",
+	"description": "Producto 1 - Descripcion",
+	"imgUrl": "https://icdn.dtcn.com/image/digitaltrends_es/iphone-12-pro-max-3-768x576.jpg",
+	"price": 5000,
+	"active": true
+}
+
+### Eliminando Producto
+DELETE http://localhost:1215/api/v1/product/60fdfafe5176465820344e05
+token: token
+Content-Type: application/json
+
+{
+	"token": "token"
+}
