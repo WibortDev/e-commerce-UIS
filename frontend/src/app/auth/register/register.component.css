@@ -1,0 +1,18 @@
+.formulario {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+mat-form-field, input {
+  width: 100%;
+}
+
+button {
+  margin-top: 2rem;
+  width: 40%;
+}
+
+h1 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 4rem;
+}
