@@ -3,8 +3,8 @@ import bcrypt from 'bcryptjs';
 
 const userSchema = new Schema( {
 	name: { type: String },
-	password: { type: String },
 	email: { type: String, unique: true },
+	password: { type: String },
 	roles: [{
 		ref: 'Role',
 		type: Schema.Types.ObjectId,

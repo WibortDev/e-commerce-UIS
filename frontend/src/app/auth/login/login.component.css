@@ -1,6 +1,5 @@
 .formulario {
-  padding-left: 3rem;
-  padding-right: 3rem;
+  padding: 3rem;
 }
 
 mat-form-field, input {

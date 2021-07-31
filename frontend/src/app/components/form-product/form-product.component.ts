@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ProductModel } from 'src/app/models/product.model';
-import { PostProductService } from 'src/app/services/post-product.service';
+import { PostProductService } from 'src/app/services/post-product/post-product.service';
 
 @Component( {
   selector: 'form-product',

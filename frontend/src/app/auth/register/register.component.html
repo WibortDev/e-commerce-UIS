@@ -1,5 +1,5 @@
 <mat-card class="formulario">
-  <h1>Registro</h1>
+  <h1>Registro</h1><br><br>
 
   <form (submit)="onSignUp(userForm)" #userForm="ngForm">
     <mat-form-field appearance="legacy">
@@ -19,6 +19,7 @@
       <input type="email" matInput name="email"
         placeholder="pepito@perez.com"
         [ngModel]="user.email"
+        pattern="[^ @]*@[^ @]*"
         #email="ngModel"
         required
       >
@@ -39,6 +40,5 @@
     <button type="submit" mat-raised-button color="primary" >
       Crear Cuenta
     </button>
-    <br><br>
   </form>
 </mat-card>

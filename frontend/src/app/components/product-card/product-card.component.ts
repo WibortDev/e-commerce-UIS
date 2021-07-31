@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ProductModel } from 'src/app/models/product.model';
-import { PostProductService } from 'src/app/services/post-product.service';
+import { PostProductService } from 'src/app/services/post-product/post-product.service';
 
 @Component({
   selector: 'product-card',
