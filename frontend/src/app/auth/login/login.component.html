@@ -1,0 +1,32 @@
+<mat-card class="formulario">
+  <h1>Login</h1>
+
+  <form (submit)="onLogIn(userForm)" #userForm="ngForm">
+    <mat-form-field appearance="legacy">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput name="email"
+        placeholder="pepito@perez.com"
+        [ngModel]="user.email"
+        #email="ngModel"
+        required
+      >
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Contraseña</mat-label>
+      <input type="password" matInput name="password"
+        placeholder="Contraseña de Pepito"
+        [ngModel]="user.password"
+        #password="ngModel"
+        required
+      >
+    </mat-form-field>
+    <br><br>
+    <button type="submit" mat-raised-button color="primary" >
+      Ingresar
+    </button>
+    <br><br>
+  </form>
+</mat-card>

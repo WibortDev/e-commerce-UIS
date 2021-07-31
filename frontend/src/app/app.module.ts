@@ -16,8 +16,8 @@ import { FormProductComponent } from './components/form-product/form-product.com
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { HeaderComponent } from './pages/header/header.component';
 import { IndexComponent } from './pages/index/index.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 @NgModule({
   declarations: [
@@ -44,4 +44,5 @@ import { RegisterComponent } from './components/register/register.component';
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
