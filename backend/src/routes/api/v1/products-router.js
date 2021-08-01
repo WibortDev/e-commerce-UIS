@@ -11,18 +11,18 @@ router.get( '/:productId', productsCtrl.getProduct );
 
 router.post(
 	'/',
-	/* [authJwt.verifyToken, authJwt.verifyAdminToken], */
+	[authJwt.verifyToken, authJwt.verifyAdminToken],
 	productsCtrl.sendProduct
 );
 
 router.put(
 	'/:productId',
-	/* [authJwt.verifyToken, authJwt.verifyAdminToken], */
+	[authJwt.verifyToken, authJwt.verifyAdminToken],
 	productsCtrl.editProduct
 );
 router.delete(
 	'/:productId',
-	/* [authJwt.verifyToken, authJwt.verifyAdminToken], */
+	[authJwt.verifyToken, authJwt.verifyAdminToken],
 	productsCtrl.deleteProduct
 );
 

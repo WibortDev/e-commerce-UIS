@@ -17,18 +17,15 @@ const requireAdmin = async ( req ) => {
 };
 
 export const verifyToken = async ( req, res, next ) => {
-	const { token } = req.headers;
-
+	const token = req.headers.token.split( ' ' )[1] || null;
 	if ( !token ) return res.status( 403 ).json( { message: 'No Token Provided' } );
 
 	const decoded = jsonWTVerify( token );
-
 	if ( !decoded ) return res.status( 403 ).json( { message: 'No Token Provided' } );
 
 	req.userId = decoded.id;
 
 	const user = await User.findById( decoded.id, { password: 0 } );
-
 	if ( !user ) return res.status( 404 ).json( { message: 'User no Found' } );
 
 	next();
