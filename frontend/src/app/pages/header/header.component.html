@@ -3,8 +3,9 @@
   <span class="spacer"></span>
   <ul>
     <li><a mat-button routerLink="/products" routerLinkActive="mat-basic">Productos</a></li>
-    <li><a mat-button routerLink="/add" routerLinkActive="mat-basic">Nuevo Producto</a></li>
-    <li><a mat-button routerLink="/login" routerLinkActive="mat-basic">Login</a></li>
-    <li><a mat-button routerLink="/register" routerLinkActive="mat-basic">Register</a></li>
+    <li *ngIf="isAuth"><a mat-button routerLink="/add" routerLinkActive="mat-basic">Nuevo Producto</a></li>
+    <li *ngIf="!isAuth"><a mat-button routerLink="/login" routerLinkActive="mat-basic">Login</a></li>
+    <li *ngIf="!isAuth"><a mat-button routerLink="/register" routerLinkActive="mat-basic">Register</a></li>
+    <li *ngIf="isAuth"><a mat-button routerLinkActive="mat-basic" (click)="onLogOut()" >Cerrar Sesión</a></li>
   </ul>
 </mat-toolbar>
