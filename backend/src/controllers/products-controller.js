@@ -16,11 +16,11 @@ export const sendProduct = async ( req, res ) => {
 		description,
 		imgUrl,
 		price,
-		active
+		active: active || true,
+		author: req.userId
 	} );
 
 	const saveProduct = await newProduct.save();
-
 	res.status( 200 ).json( saveProduct );
 };
 

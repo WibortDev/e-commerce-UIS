@@ -5,7 +5,8 @@ const productSchema = new Schema( {
 	description: { type: String },
 	imgUrl: { type: String },
 	price: { type: Number },
-	active: { type: Boolean }
+	active: { type: Boolean },
+	author: { type: Schema.Types.ObjectId, ref: 'User' },
 }, {
 	timestamps: true,
 	versionKey: false,
