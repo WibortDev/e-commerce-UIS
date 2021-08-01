@@ -5,6 +5,8 @@ import { assignRoles } from '../libs/roles';
 import { jsonWTSend } from '../libs/token';
 import { notFound, verifySearch } from '../helpers/functions';
 
+const expiresIn = 86400;
+
 export const signIn = async ( req, res ) => {
 	const { email, password } = req.body;
 
@@ -14,8 +16,8 @@ export const signIn = async ( req, res ) => {
 	const isValid = await User.comparePassword( password, user.password );
 	if ( !isValid ) return notFound( res, 'Invalid Password' );
 
-	const token = await jsonWTSend( 86400, user.id );
-	res.json( { token, id: user.id } );
+	const token = await jsonWTSend( expiresIn, user.id );
+	res.json( { token, id: user.id, expiresIn } );
 };
 
 export const sendUser = async ( req, res ) => {
@@ -43,8 +45,8 @@ export const sendUser = async ( req, res ) => {
 
 	const saveUser = await newUser.save();
 
-	const token = jsonWTSend( 86400, saveUser._id );
-	res.status( 200 ).json( { token, id: saveUser._id } );
+	const token = jsonWTSend( expiresIn, saveUser._id );
+	res.status( 200 ).json( { token, id: saveUser._id, expiresIn } );
 };
 
 export const getUser = async ( req, res ) => {
