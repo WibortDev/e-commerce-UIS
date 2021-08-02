@@ -14,6 +14,7 @@ import { PostProductService } from 'src/app/services/post-product/post-product.s
 export class FormProductComponent implements OnInit {
   public isEditMode: boolean = false;
   private idEdit!: string;
+
   product: ProductModel = {
     _id: '',
     title: '',
