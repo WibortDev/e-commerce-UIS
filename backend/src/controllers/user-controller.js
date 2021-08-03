@@ -63,7 +63,18 @@ export const getUser = async ( req, res ) => {
 	const { userId } = req.params;
 
 	try {
-		const user = await User.findOne( { _id: userId } ).populate( 'roles' );
+		const user = await User.findById( userId ).populate( 'roles' );
+		verifySearch( res, user, 'User not Found' );
+	} catch ( err ) {
+		notFound( res, 'User not Found' );
+	}
+};
+
+export const getAccount = async ( req, res ) => {
+	const { userId } = req;
+
+	try {
+		const user = await User.findById( userId ).populate( 'roles' );
 		verifySearch( res, user, 'User not Found' );
 	} catch ( err ) {
 		notFound( res, 'User not Found' );

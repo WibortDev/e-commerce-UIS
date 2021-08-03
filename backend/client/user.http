@@ -17,6 +17,10 @@ Content-Type: application/json
 	"email": "luis@gmail.com"
 }
 
+### Datos de la cuenta
+GET http://localhost:1215/api/v1/user/account
+token: token
+
 ### Obteniendo Datos de los Usuarios
 GET http://localhost:1215/api/v1/user
 token: token

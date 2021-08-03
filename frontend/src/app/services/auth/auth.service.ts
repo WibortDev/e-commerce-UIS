@@ -13,11 +13,13 @@ import { API_URL } from '../api';
 export class AuthService {
   private token!: string;
   private roles!: string[];
+  private userName!: string;
 
   private isAdmin = false;
   private isAuthenticated = false;
 
   private authListener = new Subject<boolean>();
+  private nameListener = new Subject<string>();
   private adminListener = new Subject<boolean>();
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -41,6 +43,8 @@ export class AuthService {
       this.adminListener.next(this.isAdmin);
       this.authListener.next(true);
       this.router.navigate(['/products']);
+
+      this.getUserAccountData();
     }
   }
 
@@ -92,6 +96,8 @@ export class AuthService {
         this.isAdmin = this.roles.includes('admin');
         this.authListener.next(true);
         this.adminListener.next(this.isAdmin);
+
+        this.getUserAccountData();
       }
     } else {
       this.logOut();
@@ -116,6 +122,7 @@ export class AuthService {
   logOut() {
     this.token = '';
     this.roles = [];
+    this.userName = '';
 
     this.removeAuthData();
     this.isAuthenticated = false;
@@ -123,6 +130,17 @@ export class AuthService {
     this.adminListener.next(this.isAdmin);
     this.authListener.next(false);
     this.router.navigate(['/']);
+  }
+
+  async getUserAccountData() {
+    this.http.get<UserModel>(`${API_URL}/user/account`).subscribe( ( user ) => {
+      this.userName = user.name;
+      this.nameListener.next(this.userName);
+    } );
+  }
+
+  getUserName() {
+    return this.userName;
   }
 
   getToken() {
@@ -135,6 +153,10 @@ export class AuthService {
 
   getAdminListener() {
     return this.adminListener.asObservable();
+  }
+
+  getNameListener() {
+    return this.nameListener.asObservable();
   }
 
   getIsAuthenticated() {

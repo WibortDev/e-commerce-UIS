@@ -1,5 +1,9 @@
 <mat-toolbar color="primary">
   <a mat-button routerLink=""><mat-icon>shopping_bag</mat-icon> e-commerce</a>
+  <ul>
+    <li *ngIf="isAuth && !isAdmin"><a mat-button routerLink="/fav" routerLinkActive="mat-basic"><mat-icon>account_circle</mat-icon> {{ userName }}</a></li>
+    <li *ngIf="isAdmin"><a mat-button routerLink="/admin" routerLinkActive="mat-basic"><mat-icon>account_circle</mat-icon> {{ userName }}</a></li>
+  </ul>
   <span class="spacer"></span>
   <ul>
     <li><a mat-button routerLink="/products" routerLinkActive="mat-basic">Productos</a></li>

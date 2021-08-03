@@ -11,12 +11,15 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class HeaderComponent implements OnInit, OnDestroy {
   isAuth = false;
   isAdmin = false;
+  userName = '';
   private authListenerSub!: Subscription;
   private adminListenerSub!: Subscription;
+  private nameListenerSub!: Subscription;
 
   constructor(private authService: AuthService) {
     this.isAuth = authService.getIsAuthenticated();
     this.isAdmin = authService.getIsAdmin();
+    this.userName = authService.getUserName();
 
     this.authListenerSub = this.authService.getAuthListener().subscribe( isAuthenticated => {
       this.isAuth = isAuthenticated;
@@ -24,6 +27,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     this.adminListenerSub = this.authService.getAdminListener().subscribe( isAdmin => {
       this.isAdmin = isAdmin;
+    } );
+
+    this.nameListenerSub = this.authService.getNameListener().subscribe( userName => {
+      this.userName = userName;
     } );
   }
 
@@ -37,6 +44,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.authListenerSub.unsubscribe();
     this.adminListenerSub.unsubscribe();
+    this.nameListenerSub.unsubscribe();
   }
 
 }

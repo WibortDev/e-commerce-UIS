@@ -11,6 +11,13 @@ router.get(
 	[authJwt.verifyToken, authJwt.verifyAdminToken],
 	userCtrl.getUsers
 );
+
+router.get(
+	'/account',
+	[authJwt.verifyToken],
+	userCtrl.getAccount
+);
+
 router.get(
 	'/:userId',
 	[authJwt.verifyToken, authJwt.verifyAuthorToken],
