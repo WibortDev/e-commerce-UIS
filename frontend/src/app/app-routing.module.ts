@@ -10,8 +10,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { IndexComponent } from './pages/index/index.component';
-import { FavoriteProductComponent } from './components/favorite-product/favorite-product.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'edit/:id', component: FormProductComponent, canActivate: [AdminGuard] },
   { path: 'login', component: LoginComponent, canActivate: [NoAuthGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [NoAuthGuard] },
-  { path: 'fav', component: FavoriteProductComponent, canActivate: [AuthGuard] },
+  { path: 'fav', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
 ];
 

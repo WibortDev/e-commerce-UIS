@@ -19,8 +19,8 @@ import { IndexComponent } from './pages/index/index.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
-import { FavoriteProductComponent } from './components/favorite-product/favorite-product.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule( {
   declarations: [
@@ -31,8 +31,8 @@ import { AdminComponent } from './components/admin/admin.component';
     IndexComponent,
     LoginComponent,
     RegisterComponent,
-    FavoriteProductComponent,
-    AdminComponent
+    AdminComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
