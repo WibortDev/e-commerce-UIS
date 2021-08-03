@@ -19,8 +19,10 @@ import { IndexComponent } from './pages/index/index.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { AdminComponent } from './components/admin/admin.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
-@NgModule({
+@NgModule( {
   declarations: [
     AppComponent,
     FormProductComponent,
@@ -28,7 +30,9 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     HeaderComponent,
     IndexComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AdminComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +52,6 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     multi: true
   }],
   bootstrap: [AppComponent]
-})
+} )
 
 export class AppModule { }
