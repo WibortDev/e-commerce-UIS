@@ -10,14 +10,19 @@ const expiresIn = 86400;
 export const signIn = async ( req, res ) => {
 	const { email, password } = req.body;
 
-	const user = await User.findOne( { email } );
+	const user = await User.findOne( { email } ).populate( 'roles' );
 	if ( !user ) return notFound( res, 'User not Register' );
 
 	const isValid = await User.comparePassword( password, user.password );
 	if ( !isValid ) return notFound( res, 'Invalid Password' );
 
 	const token = await jsonWTSend( expiresIn, user.id );
-	res.json( { token, id: user.id, expiresIn } );
+
+	res.json( {
+		token,
+		expiresIn,
+		roles: user.roles,
+	} );
 };
 
 export const sendUser = async ( req, res ) => {
@@ -46,7 +51,12 @@ export const sendUser = async ( req, res ) => {
 	const saveUser = await newUser.save();
 
 	const token = jsonWTSend( expiresIn, saveUser._id );
-	res.status( 200 ).json( { token, id: saveUser._id, expiresIn } );
+
+	res.status( 200 ).json( {
+		token,
+		expiresIn,
+		roles: saveUser.roles
+	} );
 };
 
 export const getUser = async ( req, res ) => {

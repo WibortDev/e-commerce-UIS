@@ -5,7 +5,7 @@
         <img mat-card-image height="300" src="{{ product.imgUrl }}">
         <mat-card-title>{{ product.title }} - <strong>$ {{ product.price }}</strong></mat-card-title>
         <mat-card-content><br>{{ product.description }}</mat-card-content>
-        <mat-card-actions *ngIf="isAuth">
+        <mat-card-actions *ngIf="isAdmin">
           <button mat-stroked-button color="primary" [routerLink]="['/edit', product._id]" >Editar</button>
           <button mat-stroked-button color="warn" (click)="deleteProduct(product._id)">Eliminar</button>
           <br><br>
