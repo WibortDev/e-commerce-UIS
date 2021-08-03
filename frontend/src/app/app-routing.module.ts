@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './auth/auth.guard';
+
+import { AuthGuard } from './auth/guards/auth.guard';
+import { NoAuthGuard } from './auth/guards/no-auth.guard';
+import { AdminGuard } from './auth/guards/admin.guard';
 
 import { FormProductComponent } from './components/form-product/form-product.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -11,17 +14,19 @@ import { IndexComponent } from './pages/index/index.component';
 const routes: Routes = [
   { path: '', component: IndexComponent },
   { path: 'products', component: ProductCardComponent },
-  { path: 'add', component: FormProductComponent, canActivate: [AuthGuard] },
-  { path: 'edit/:id', component: FormProductComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'add', component: FormProductComponent, canActivate: [AdminGuard] },
+  { path: 'edit/:id', component: FormProductComponent, canActivate: [AdminGuard] },
+  { path: 'login', component: LoginComponent, canActivate: [NoAuthGuard] },
+  { path: 'register', component: RegisterComponent, canActivate: [NoAuthGuard] },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
   providers: [
-    AuthGuard
+    AuthGuard,
+    NoAuthGuard,
+    AdminGuard
   ]
 })
 
