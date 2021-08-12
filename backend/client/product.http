@@ -38,3 +38,12 @@ Content-Type: application/json
 {
 	"token": "token"
 }
+
+### agragando a Favorito
+POST http://localhost:1215/api/v1/fav
+token: token
+Content-Type: application/json
+
+{
+	"id": "60fdfafe5176465820344e05"
+}

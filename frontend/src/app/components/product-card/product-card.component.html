@@ -10,6 +10,10 @@
           <button mat-stroked-button color="warn" (click)="deleteProduct(product._id)">Eliminar</button>
           <br><br>
         </mat-card-actions>
+        <mat-card-actions *ngIf="isAuth && !isAdmin">
+          <button mat-stroked-button color="accent" (click)="addFav(product._id)" >Agregar a Favoritos</button>
+          <br><br>
+        </mat-card-actions>
       </mat-card>
     </div>
   </div>
