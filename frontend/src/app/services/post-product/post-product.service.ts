@@ -49,6 +49,12 @@ export class PostProductService {
     return this.productsUpdate.asObservable();
   }
 
+  addFav(id: string) {
+    this.http.post( `${API_URL}/fav`, { id }).subscribe( (response) => {
+      console.log( response );
+    } );
+  }
+
   deleteProduct(id: string) {
     this.http.delete(`${API_URL}/product/${id}`).subscribe( ( _response ) => {
       this.products = this.products.filter( (product) => {

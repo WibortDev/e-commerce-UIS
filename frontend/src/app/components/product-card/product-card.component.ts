@@ -47,4 +47,8 @@ export class ProductCardComponent implements OnInit, OnDestroy {
   deleteProduct( id: string ): void {
     this.postService.deleteProduct( id );
   }
+
+  addFav( id: string ): void {
+    this.postService.addFav( id );
+  }
 }
