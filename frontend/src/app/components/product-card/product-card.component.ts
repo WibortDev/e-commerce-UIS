@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ProductModel } from 'src/app/models/product.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { FavProductService } from 'src/app/services/fav-product/fav-product.service';
 import { PostProductService } from 'src/app/services/post-product/post-product.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class ProductCardComponent implements OnInit, OnDestroy {
   private authListenerSub!: Subscription;
   private adminListenerSub!: Subscription;
 
-  constructor(public postService: PostProductService, public authService: AuthService) {}
+  constructor(public postService: PostProductService, public favService: FavProductService, public authService: AuthService) {}
 
   ngOnInit(): void {
     this.isAuth = this.authService.getIsAuthenticated();
@@ -49,6 +50,6 @@ export class ProductCardComponent implements OnInit, OnDestroy {
   }
 
   addFav( id: string ): void {
-    this.postService.addFav( id );
+    this.favService.addFav( id );
   }
 }

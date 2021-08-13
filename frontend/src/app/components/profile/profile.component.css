@@ -1,0 +1,19 @@
+.grid {
+  display: inline-grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-template-rows: minmax(150px, 1fr);
+  grid-auto-flow: row dense;
+}
+
+.img-notfound {
+  clip-path: polygon(14% 12%, 92% 9%, 82% 83%, 7% 94%);
+  margin-top: 1rem;
+  width: 50%;
+}
+
+@media all and (max-width: 800px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

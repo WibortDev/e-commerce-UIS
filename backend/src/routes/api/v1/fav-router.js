@@ -12,4 +12,16 @@ router.post(
 	favCtrl.addFavProduct
 );
 
+router.get(
+	'/',
+	[authJwt.verifyToken],
+	favCtrl.getFavProducts
+);
+
+router.delete(
+	'/:favId',
+	[authJwt.verifyToken],
+	favCtrl.deleteFavProduct
+);
+
 export default router;
