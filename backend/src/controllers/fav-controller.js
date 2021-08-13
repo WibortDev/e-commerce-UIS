@@ -1,5 +1,4 @@
 import Fav from '../models/fav';
-
 import Product from '../models/product';
 
 import { verifySearch, notFound } from '../helpers/functions';
