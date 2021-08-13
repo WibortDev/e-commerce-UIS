@@ -12,4 +12,10 @@ router.post(
 	favCtrl.addFavProduct
 );
 
+router.get(
+	'/',
+	[authJwt.verifyToken],
+	favCtrl.getFavProducts
+);
+
 export default router;
