@@ -18,4 +18,10 @@ router.get(
 	favCtrl.getFavProducts
 );
 
+router.delete(
+	'/:favId',
+	[authJwt.verifyToken],
+	favCtrl.deleteFavProduct
+);
+
 export default router;

@@ -36,7 +36,7 @@ export const getProduct = async ( req, res ) => {
 };
 
 export const getProducts = async ( _req, res ) => {
-	const products = await Product.find();
+	const products = await Product.find().sort( '-createdAt' );
 	res.status( 200 ).json( products );
 };
 

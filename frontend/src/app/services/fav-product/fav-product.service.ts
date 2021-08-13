@@ -43,9 +43,12 @@ export class FavProductService {
   }
 
   removeFav(id: string) {
-    console.log( id );
-    /* this.http.delete( `${API_URL}/fav/${id}`).subscribe( (response) => {
-      console.log( response );
-    } ); */
+    this.http.delete<{ product: ProductModel }>( `${API_URL}/fav/${id}`).subscribe( (_response) => {
+      this.products = this.products.filter( (product) => {
+        return product._id !== id;
+      });
+
+      this.productsUpdate.next([...this.products]);
+    } );
   }
 }

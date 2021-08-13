@@ -6,8 +6,7 @@ import { verifySearch, notFound } from '../helpers/functions';
 
 export const getFavProducts = async ( req, res ) => {
 	try {
-		const favs = await Fav.find( { user: req.userId } ).populate( 'product' );
-		console.log( favs );
+		const favs = await Fav.find( { user: req.userId } ).populate( 'product' ).sort( '-createdAt' );
 		if ( favs ) {
 			res.status( 200 ).json( favs );
 		} else {
@@ -31,4 +30,15 @@ export const addFavProduct = async ( req, res ) => {
 
 	const saveFav = await fav.save();
 	res.status( 200 ).json( saveFav );
+};
+
+export const deleteFavProduct = async ( req, res ) => {
+	const { favId } = req.params;
+
+	try {
+		const product = await Fav.findOneAndDelete( { product: favId, user: req.userId } ).populate( 'product' );
+		verifySearch( res, product );
+	} catch ( err ) {
+		notFound( res );
+	}
 };
