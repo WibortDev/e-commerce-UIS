@@ -1,14 +1,24 @@
 import Role from '../models/role';
+import User from '../models/user';
 
-export const createRoles = async () => {
+export const createRolesAndAdmin = async () => {
 	const count = await Role.estimatedDocumentCount();
-
 	if ( count > 0 ) return;
 
-	const values = await Promise.all( [
-		new Role( { name: 'user' } ).save(),
-		new Role( { name: 'admin' } ).save(),
-	] );
+	const userRole = await new Role( { name: 'user' } ).save();
+	const adminRole = await new Role( { name: 'admin' } ).save();
 
-	console.log( values );
+	const admin = await User.findOne( { email: 'admin@grupo8.com' } );
+	if ( !admin ) {
+		const account = await User.create( {
+			name: 'Administrador',
+			email: 'admin@grupo8.com',
+			password: await User.encriptPassword( process.env.PASSWORD_ADMIN ),
+			roles: [adminRole._id, userRole._id],
+		} );
+
+		console.log( account );
+	}
+
+	console.log( [userRole, adminRole] );
 };

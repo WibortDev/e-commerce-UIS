@@ -1,4 +1,5 @@
 import Product from '../models/product';
+import Fav from '../models/fav';
 
 import { verifySearch, notFound } from '../helpers/functions';
 
@@ -73,6 +74,11 @@ export const deleteProduct = async ( req, res ) => {
 
 	try {
 		const product = await Product.findByIdAndRemove( productId );
+		const favsProduct = await Fav.find( { product: productId } );
+		favsProduct.forEach( ( fav ) => {
+			fav.remove();
+		} );
+
 		verifySearch( res, product );
 	} catch ( err ) {
 		notFound( res );

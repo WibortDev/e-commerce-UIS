@@ -3,13 +3,13 @@ import morgan from 'morgan';
 import cors from 'cors';
 import path from 'path';
 
-import { createRoles } from './libs/initialSetup';
+import { createRolesAndAdmin } from './libs/initialSetup';
 
 import routes from './routes/index';
 
 const app = express();
 
-createRoles();
+createRolesAndAdmin();
 
 app.set( 'port', process.env.PORT || 1215 );
 
