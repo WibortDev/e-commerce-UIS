@@ -1,0 +1,19 @@
+.container {
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  margin-bottom: 5rem;
+}
+
+span {
+  text-align: left;
+}
+
+mat-icon {
+  font-size: 20px;
+}

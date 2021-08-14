@@ -1,1 +1,16 @@
-<p>admin works!</p>
+<h1> <strong>Administracion de Usuarios</strong> </h1>
+
+<div *ngFor="let user of users">
+
+  <div class="container">
+    <span><mat-icon>account_circle</mat-icon><strong>{{user.name}}</strong></span>
+    <span>{{ user.email }}</span>
+    <span>
+      <button mat-stroked-button color="primary" *ngIf="user.permiso?.includes( 'admin' )">Quitar Admin</button>
+      <button mat-stroked-button color="primary" *ngIf="!user.permiso?.includes( 'admin' )">Dar Admin</button>
+      <button mat-stroked-button color="warn">Eliminar</button>
+    </span>
+  </div>
+
+  <mat-divider></mat-divider>
+</div>

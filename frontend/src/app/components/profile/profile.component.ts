@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ProductModel } from 'src/app/models/product.model';
-import { AuthService } from 'src/app/services/auth/auth.service';
 import { FavProductService } from 'src/app/services/fav-product/fav-product.service';
 
 @Component({
@@ -10,11 +9,11 @@ import { FavProductService } from 'src/app/services/fav-product/fav-product.serv
   styleUrls: ['./profile.component.css']
 })
 
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
   products: ProductModel[] = [];
   productFavSubscription!: Subscription;
 
-  constructor(public favService: FavProductService, public authService: AuthService) {}
+  constructor(public favService: FavProductService) {}
 
   ngOnInit(): void {
     this.products = this.favService.getProducts();
