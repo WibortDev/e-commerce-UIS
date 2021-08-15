@@ -34,18 +34,18 @@ router.put(
 );
 router.put(
 	'/admin/:userId',
-	[authJwt.verifyToken, authJwt.verifyAdminToken],
+	[authJwt.verifyToken, authJwt.verifyAdminToken, authJwt.excludeOwner],
 	userCtrl.giveRoleAdmin
 );
 
 router.delete(
 	'/:userId',
-	[authJwt.verifyToken, authJwt.verifyAuthorToken],
+	[authJwt.verifyToken, authJwt.verifyAuthorToken, authJwt.excludeOwner],
 	userCtrl.deleteUser
 );
 router.delete(
 	'/admin/:userId',
-	[authJwt.verifyToken, authJwt.verifyAdminToken],
+	[authJwt.verifyToken, authJwt.verifyAdminToken, authJwt.excludeOwner],
 	userCtrl.removeRoleAdmin
 );
 

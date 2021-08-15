@@ -7,6 +7,7 @@ export const createRolesAndAdmin = async () => {
 
 	const userRole = await new Role( { name: 'user' } ).save();
 	const adminRole = await new Role( { name: 'admin' } ).save();
+	const ownerRole = await new Role( { name: 'owner' } ).save();
 
 	const admin = await User.findOne( { email: 'admin@grupo8.com' } );
 	if ( !admin ) {
@@ -14,11 +15,11 @@ export const createRolesAndAdmin = async () => {
 			name: 'Administrador',
 			email: 'admin@grupo8.com',
 			password: await User.encriptPassword( process.env.PASSWORD_ADMIN ),
-			roles: [adminRole._id, userRole._id],
+			roles: [ownerRole._id, adminRole._id, userRole._id],
 		} );
 
 		console.log( account );
 	}
 
-	console.log( [userRole, adminRole] );
+	console.log( [ownerRole, userRole, adminRole] );
 };

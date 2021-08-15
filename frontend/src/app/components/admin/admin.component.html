@@ -1,14 +1,19 @@
-<h1> <strong>Administracion de Usuarios</strong> </h1>
+<h1> <strong>Administración de Usuarios</strong> </h1>
 
 <div *ngFor="let user of users">
 
   <div class="container">
     <span><mat-icon>account_circle</mat-icon><strong>{{user.name}}</strong></span>
     <span>{{ user.email }}</span>
-    <span>
+
+    <span *ngIf="!user.permiso?.includes( 'owner' )" >
       <button mat-stroked-button color="primary" (click)="removeAdmin( user._id )" *ngIf="user.permiso?.includes( 'admin' )">Quitar Admin</button>
       <button mat-stroked-button color="primary" (click)="giveAdmin( user._id )" *ngIf="!user.permiso?.includes( 'admin' )">Dar Admin</button>
       <button mat-stroked-button color="warn" (click)="removeUser( user._id )">Eliminar</button>
+    </span>
+
+    <span *ngIf="user.permiso?.includes( 'owner' )" >
+      <strong>Owner</strong>
     </span>
   </div>
 
