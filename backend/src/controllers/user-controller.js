@@ -1,5 +1,6 @@
 import User from '../models/user';
 import Role from '../models/role';
+import Fav from '../models/fav';
 
 import { assignRoles } from '../libs/roles';
 import { jsonWTSend } from '../libs/token';
@@ -120,6 +121,14 @@ export const deleteUser = async ( req, res ) => {
 
 	try {
 		const user = await User.findByIdAndDelete( userId );
+
+		if ( user ) {
+			const favsProduct = await Fav.find( { user: user._id } );
+			favsProduct.forEach( ( fav ) => {
+				fav.remove();
+			} );
+		}
+
 		verifySearch( res, user, 'User not Found' );
 	} catch ( err ) {
 		notFound( res, 'User not Found' );

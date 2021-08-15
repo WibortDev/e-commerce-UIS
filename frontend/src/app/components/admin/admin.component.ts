@@ -29,13 +29,15 @@ export class AdminComponent implements OnInit, OnDestroy {
         user.permiso = roles;
       });
 
-      console.log( this.users );
-
     });
   }
 
   ngOnDestroy(): void {
     this.usersSubscription.unsubscribe();
+  }
+
+  removeUser(id: string | undefined): void {
+    this.adminService.removeUser( id );
   }
 
 }

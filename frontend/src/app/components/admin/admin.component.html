@@ -8,7 +8,7 @@
     <span>
       <button mat-stroked-button color="primary" *ngIf="user.permiso?.includes( 'admin' )">Quitar Admin</button>
       <button mat-stroked-button color="primary" *ngIf="!user.permiso?.includes( 'admin' )">Dar Admin</button>
-      <button mat-stroked-button color="warn">Eliminar</button>
+      <button mat-stroked-button color="warn" (click)="removeUser( user._id )">Eliminar</button>
     </span>
   </div>
 

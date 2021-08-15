@@ -46,7 +46,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    MatDividerModule,
+    MatDividerModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

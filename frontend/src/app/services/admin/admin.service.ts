@@ -28,4 +28,11 @@ export class AdminService {
     return this.usersUpdate.asObservable();
   }
 
+  removeUser(id: string | undefined) {
+    this.http.delete(`${API_URL}/user/${id}`).subscribe( (response) => {
+      this.users = this.users.filter( (user) => user._id !== id );
+      this.usersUpdate.next([...this.users]);
+    } );
+  }
+
 }
