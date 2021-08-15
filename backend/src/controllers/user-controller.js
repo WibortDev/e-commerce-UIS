@@ -1,5 +1,6 @@
 import User from '../models/user';
 import Role from '../models/role';
+import Fav from '../models/fav';
 
 import { assignRoles } from '../libs/roles';
 import { jsonWTSend } from '../libs/token';
@@ -120,6 +121,14 @@ export const deleteUser = async ( req, res ) => {
 
 	try {
 		const user = await User.findByIdAndDelete( userId );
+
+		if ( user ) {
+			const favsProduct = await Fav.find( { user: user._id } );
+			favsProduct.forEach( ( fav ) => {
+				fav.remove();
+			} );
+		}
+
 		verifySearch( res, user, 'User not Found' );
 	} catch ( err ) {
 		notFound( res, 'User not Found' );
@@ -135,6 +144,22 @@ export const giveRoleAdmin = async ( req, res ) => {
 			roles: await assignRoles( Role, roles ),
 		} );
 		if ( user ) return res.status( 200 ).json( { message: 'Now is Admin' } );
+
+		notFound( res, 'User not Found' );
+	} catch ( err ) {
+		notFound( res, 'User not Found' );
+	}
+};
+
+export const removeRoleAdmin = async ( req, res ) => {
+	const { userId } = req.params;
+	const roles = ['user'];
+
+	try {
+		const user = await User.findByIdAndUpdate( userId, {
+			roles: await assignRoles( Role, roles ),
+		} );
+		if ( user ) return res.status( 200 ).json( { message: 'Now is not Admin' } );
 
 		notFound( res, 'User not Found' );
 	} catch ( err ) {
