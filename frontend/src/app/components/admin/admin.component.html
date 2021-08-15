@@ -6,8 +6,8 @@
     <span><mat-icon>account_circle</mat-icon><strong>{{user.name}}</strong></span>
     <span>{{ user.email }}</span>
     <span>
-      <button mat-stroked-button color="primary" *ngIf="user.permiso?.includes( 'admin' )">Quitar Admin</button>
-      <button mat-stroked-button color="primary" *ngIf="!user.permiso?.includes( 'admin' )">Dar Admin</button>
+      <button mat-stroked-button color="primary" (click)="removeAdmin( user._id )" *ngIf="user.permiso?.includes( 'admin' )">Quitar Admin</button>
+      <button mat-stroked-button color="primary" (click)="giveAdmin( user._id )" *ngIf="!user.permiso?.includes( 'admin' )">Dar Admin</button>
       <button mat-stroked-button color="warn" (click)="removeUser( user._id )">Eliminar</button>
     </span>
   </div>

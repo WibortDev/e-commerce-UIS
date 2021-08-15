@@ -40,4 +40,12 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.adminService.removeUser( id );
   }
 
+  removeAdmin( id: string | undefined ): void {
+    this.adminService.removeAdmin( id );
+  }
+
+  giveAdmin( id: string | undefined ): void {
+    this.adminService.giveAdmin( id );
+  }
+
 }

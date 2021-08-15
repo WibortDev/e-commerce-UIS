@@ -43,5 +43,10 @@ router.delete(
 	[authJwt.verifyToken, authJwt.verifyAuthorToken],
 	userCtrl.deleteUser
 );
+router.delete(
+	'/admin/:userId',
+	[authJwt.verifyToken, authJwt.verifyAdminToken],
+	userCtrl.removeRoleAdmin
+);
 
 export default router;

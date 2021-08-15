@@ -150,3 +150,19 @@ export const giveRoleAdmin = async ( req, res ) => {
 		notFound( res, 'User not Found' );
 	}
 };
+
+export const removeRoleAdmin = async ( req, res ) => {
+	const { userId } = req.params;
+	const roles = ['user'];
+
+	try {
+		const user = await User.findByIdAndUpdate( userId, {
+			roles: await assignRoles( Role, roles ),
+		} );
+		if ( user ) return res.status( 200 ).json( { message: 'Now is not Admin' } );
+
+		notFound( res, 'User not Found' );
+	} catch ( err ) {
+		notFound( res, 'User not Found' );
+	}
+};
