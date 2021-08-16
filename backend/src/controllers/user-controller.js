@@ -48,11 +48,10 @@ export const sendUser = async ( req, res ) => {
 	} );
 
 	newUser.roles = await assignRoles( Role, roles );
+	await newUser.save();
 
-	const saveUser = await newUser.save();
-
+	const saveUser = await User.findOne( { email } ).populate( 'roles' );
 	const token = jsonWTSend( expiresIn, saveUser._id );
-
 	res.status( 200 ).json( {
 		token,
 		expiresIn,
