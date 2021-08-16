@@ -46,3 +46,11 @@ export const verifyAuthorToken = async ( req, res, next ) => {
 
 	return res.status( 403 ).json( { message: 'Require Admin Role' } );
 };
+
+export const excludeOwner = async ( req, res, next ) => {
+	const user = await User.findById( req.params.userId ).populate( 'roles' );
+	const isOwner = user.roles.map( ( r ) => r.name === 'owner' ).includes( true );
+
+	if ( isOwner ) return res.status( 403 ).json( { message: "You can't touch the owner" } );
+	next();
+};
