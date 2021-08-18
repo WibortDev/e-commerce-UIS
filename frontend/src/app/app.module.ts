@@ -22,6 +22,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { AdminComponent } from './components/admin/admin.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ErrorInterceptor } from './error.interceptor';
 
 @NgModule( {
   declarations: [
@@ -51,6 +52,10 @@ import { ProfileComponent } from './components/profile/profile.component';
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
+    multi: true
+  },{
+    provide: HTTP_INTERCEPTORS,
+    useClass: ErrorInterceptor,
     multi: true
   }],
   bootstrap: [AppComponent]
