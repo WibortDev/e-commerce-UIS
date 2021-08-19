@@ -23,7 +23,6 @@ export class RegisterComponent implements OnInit {
   onSignUp(form: NgForm): void {
     if (form.invalid) return;
     this.authService.createUser(form.value);
-    form.resetForm();
   }
 
 }

@@ -2,6 +2,7 @@ import Role from '../models/role';
 import User from '../models/user';
 
 export const createRolesAndAdmin = async () => {
+	if ( !process.env.PASSWORD_ADMIN ) return;
 	const count = await Role.estimatedDocumentCount();
 	if ( count > 0 ) return;
 

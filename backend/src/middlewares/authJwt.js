@@ -35,7 +35,7 @@ export const verifyAdminToken = async ( req, res, next ) => {
 	const isAdmin = await requireAdmin( req );
 	if ( isAdmin ) return next();
 
-	return res.status( 403 ).json( { message: 'Require Admin Role' } );
+	return res.status( 403 ).json( { message: 'Necesita tener el Rol de Administrador' } );
 };
 
 export const verifyAuthorToken = async ( req, res, next ) => {
@@ -44,7 +44,7 @@ export const verifyAuthorToken = async ( req, res, next ) => {
 
 	if ( req.userId === req.params.userId ) return next();
 
-	return res.status( 403 ).json( { message: 'Require Admin Role' } );
+	return res.status( 403 ).json( { message: 'Necesita tener el Rol de Administrador' } );
 };
 
 export const excludeOwner = async ( req, res, next ) => {
