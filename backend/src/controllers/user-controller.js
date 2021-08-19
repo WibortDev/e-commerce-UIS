@@ -12,10 +12,10 @@ export const signIn = async ( req, res ) => {
 	const { email, password } = req.body;
 
 	const user = await User.findOne( { email } ).populate( 'roles' );
-	if ( !user ) return notFound( res, 'User not Register' );
+	if ( !user ) return notFound( res, 'Usuario No Registrado' );
 
 	const isValid = await User.comparePassword( password, user.password );
-	if ( !isValid ) return notFound( res, 'Invalid Password' );
+	if ( !isValid ) return notFound( res, 'Contraseña incorrecta' );
 
 	const token = await jsonWTSend( expiresIn, user.id );
 
@@ -36,7 +36,7 @@ export const sendUser = async ( req, res ) => {
 
 	try {
 		const user = await User.findOne( { email } );
-		if ( user ) return notFound( res, 'User already exists' );
+		if ( user ) return notFound( res, 'El usuario ya existe.' );
 	} catch ( err ) {
 		notFound( res, err );
 	}
@@ -64,9 +64,9 @@ export const getUser = async ( req, res ) => {
 
 	try {
 		const user = await User.findById( userId ).populate( 'roles' );
-		verifySearch( res, user, 'User not Found' );
+		verifySearch( res, user, 'Usuario no encontrado' );
 	} catch ( err ) {
-		notFound( res, 'User not Found' );
+		notFound( res, 'Usuario no encontrado' );
 	}
 };
 
@@ -75,9 +75,9 @@ export const getAccount = async ( req, res ) => {
 
 	try {
 		const user = await User.findById( userId ).populate( 'roles' );
-		verifySearch( res, user, 'User not Found' );
+		verifySearch( res, user, 'Usuario no encontrado' );
 	} catch ( err ) {
-		notFound( res, 'User not Found' );
+		notFound( res, 'Usuario no encontrado' );
 	}
 };
 
@@ -96,11 +96,11 @@ export const editUser = async ( req, res ) => {
 
 	try {
 		const user = await User.findById( userId );
-		if ( !user ) return notFound( res, 'User not Found' );
+		if ( !user ) return notFound( res, 'Usuario no encontrado' );
 
 		if ( user.email !== email ) {
 			const user2 = await User.findOne( { email } );
-			if ( user2 ) return notFound( res, 'User already exists' );
+			if ( user2 ) return notFound( res, 'El usuario ya existe' );
 		}
 
 		const editUser = await user.updateOne( {
@@ -111,7 +111,7 @@ export const editUser = async ( req, res ) => {
 
 		res.status( 200 ).json( editUser );
 	} catch ( err ) {
-		notFound( res, 'User not Found' );
+		notFound( res, 'Usuario no encontrado' );
 	}
 };
 
@@ -128,9 +128,9 @@ export const deleteUser = async ( req, res ) => {
 			} );
 		}
 
-		verifySearch( res, user, 'User not Found' );
+		verifySearch( res, user, 'Usuario no encontrado' );
 	} catch ( err ) {
-		notFound( res, 'User not Found' );
+		notFound( res, 'Usuario no encontrado' );
 	}
 };
 
@@ -142,11 +142,11 @@ export const giveRoleAdmin = async ( req, res ) => {
 		const user = await User.findByIdAndUpdate( userId, {
 			roles: await assignRoles( Role, roles ),
 		} );
-		if ( user ) return res.status( 200 ).json( { message: 'Now is Admin' } );
+		if ( user ) return res.status( 200 ).json( { message: 'Ahora es Admin' } );
 
-		notFound( res, 'User not Found' );
+		notFound( res, 'Usuario no encontrado' );
 	} catch ( err ) {
-		notFound( res, 'User not Found' );
+		notFound( res, 'Usuario no encontrado' );
 	}
 };
 
@@ -158,10 +158,10 @@ export const removeRoleAdmin = async ( req, res ) => {
 		const user = await User.findByIdAndUpdate( userId, {
 			roles: await assignRoles( Role, roles ),
 		} );
-		if ( user ) return res.status( 200 ).json( { message: 'Now is not Admin' } );
+		if ( user ) return res.status( 200 ).json( { message: 'Ya no es Admin' } );
 
-		notFound( res, 'User not Found' );
+		notFound( res, 'Usuario no encontrado' );
 	} catch ( err ) {
-		notFound( res, 'User not Found' );
+		notFound( res, 'Usuario no encontrado' );
 	}
 };

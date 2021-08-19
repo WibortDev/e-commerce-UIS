@@ -9,7 +9,7 @@ export const getFavProducts = async ( req, res ) => {
 		if ( favs ) {
 			res.status( 200 ).json( favs );
 		} else {
-			notFound( res, 'favs product not founds' );
+			notFound( res, 'Productos favoritos no encontrados ' );
 		}
 	} catch ( err ) {
 		res.status( 500 ).json( err );
@@ -23,7 +23,7 @@ export const addFavProduct = async ( req, res ) => {
 	if ( !product ) return verifySearch( res, product );
 
 	const isfav = await Fav.findOne( { product: product._id, user: req.userId } );
-	if ( isfav ) return notFound( res, 'already exists' );
+	if ( isfav ) return notFound( res, 'El Producto ya existe' );
 
 	const fav = new Fav( { product, user: req.userId } );
 
